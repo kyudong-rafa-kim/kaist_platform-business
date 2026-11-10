@@ -7,7 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="preload" as="image" href="images/office.webp" type="image/webp">
+<link rel="preload" as="image" href="images/developer.webp" type="image/webp">
 <style>
   :root {
     --pre: "Pretendard", "Noto Sans KR", "Inter", system-ui, sans-serif;
@@ -796,7 +799,21 @@
     else if (e.key === 'r' || e.key === 'R') show(0);
   });
 
-  show(0);
+  /* ---------- warm-up: fetch every font subset and decode both images before the intro starts,
+     so nothing downloads or decodes mid-animation (matters on a first visit over the network) ---------- */
+  async function warmUp() {
+    const text = document.body.innerText + ' 0123456789$%,.·~!?';
+    const faces = ['400 16px "Noto Sans KR"', '500 16px "Noto Sans KR"', '700 16px "Noto Sans KR"',
+      '500 16px Pretendard', '600 16px Pretendard', '700 16px Pretendard', '800 16px Pretendard',
+      '400 16px Inter', '500 16px Inter', '600 16px Inter', '700 16px Inter', '800 16px Inter',
+      '400 16px "JetBrains Mono"', '500 16px "JetBrains Mono"'];
+    const fonts = faces.map(f => document.fonts.load(f, text).catch(() => {}));
+    const imgs = ['images/office.webp', 'images/developer.webp'].map(src => { const i = new Image(); i.src = src; return i.decode().catch(() => {}); });
+    const timeout = new Promise(r => setTimeout(r, 4000));          // never block the deck for long
+    await Promise.race([Promise.all([...fonts, ...imgs]), timeout]);
+  }
+  stage.style.opacity = 0;
+  warmUp().then(() => { stage.style.transition = 'opacity .5s ease'; stage.style.opacity = 1; show(0); });
 })();
 </script>
 </body>
