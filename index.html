@@ -38,6 +38,8 @@
     cursor: pointer;
   }
   #world { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity 1s ease; }
+  #world.asleep { visibility: hidden; }
+  #world.asleep * { animation-play-state: paused !important; }
 
   /* ---------- narration overlay (scenes 1-3) ---------- */
   #shade {
@@ -323,20 +325,13 @@
       <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#fff8e8" stop-opacity=".55"/><stop offset="1" stop-color="#fff8e8" stop-opacity="0"/>
       </linearGradient>
-      <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
-      <filter id="softSm" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
-      <filter id="bshadow" x="-20%" y="-30%" width="140%" height="180%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#2a1e3c" flood-opacity=".18"/></filter>
-      <filter id="maskBlur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="22"/></filter>
-      <mask id="devFade" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
-        <rect x="10" y="10" width="1652" height="921" fill="#fff" filter="url(#maskBlur)"/>
-      </mask>
     </defs>
 
     <!-- ===== OFFICE (images/office.png, 1672x941 px → world 1600x900) ===== -->
     <g id="officeLayer" transform="scale(0.956938)">
-      <image href="images/office.jpg" width="1672" height="941"/>
+      <image href="images/office.webp" width="1672" height="941"/>
       <!-- window light beams -->
-      <g class="beams" style="mix-blend-mode:screen">
+      <g class="beams">
         <polygon points="560,120 700,120 420,941 120,941" fill="url(#beam)"/>
         <polygon points="800,120 950,120 760,941 480,941" fill="url(#beam)"/>
         <polygon points="960,120 1110,120 1060,941 800,941" fill="url(#beam)" class="b2"/>
@@ -344,21 +339,21 @@
       <!-- floating dust in the window light (filled by script) -->
       <g id="dust"></g>
       <!-- steam over the hero's mug -->
-      <g class="steamA" filter="url(#softSm)" stroke="#fff" stroke-linecap="round" fill="none" stroke-width="4">
+      <g class="steamA" stroke="#fff" stroke-opacity=".75" stroke-linecap="round" fill="none" stroke-width="4">
         <path d="M548 782 q-8 -12 0 -24 q8 -12 0 -24"/><path d="M562 784 q-8 -12 0 -24 q8 -12 0 -24"/>
       </g>
-      <ellipse class="glow" cx="664" cy="668" rx="230" ry="150" fill="url(#screenGlow)" style="mix-blend-mode:screen"/>
+      <ellipse class="glow" cx="664" cy="668" rx="230" ry="150" fill="url(#screenGlow)"/>
       <!-- people talking + music from the hero's headphones -->
-      <g class="talk"><g class="bubble" style="animation-delay:0s"><rect x="156" y="209" width="80" height="39" rx="20" fill="#fff" filter="url(#bshadow)"/><path d="M150 258 L158 247 L174 247 Z" fill="#fff"/><text x="196" y="236" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="21" fill="#3c3c44">abc~</text></g><g class="bubble" style="animation-delay:1.4s"><rect x="1160" y="203" width="156" height="39" rx="20" fill="#fff" filter="url(#bshadow)"/><path d="M1322 252 L1298 241 L1314 241 Z" fill="#fff"/><text x="1238" y="230" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="21" fill="#3c3c44">blah blah~</text></g><g class="bubble" style="animation-delay:2.6s"><rect x="1558" y="217" width="80" height="39" rx="20" fill="#fff" filter="url(#bshadow)"/><path d="M1552 266 L1560 255 L1576 255 Z" fill="#fff"/><text x="1598" y="244" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="21" fill="#3c3c44">abc!</text></g></g>
+      <g class="talk"><g class="bubble" style="animation-delay:0s"><rect x="156" y="211" width="80" height="39" rx="20" fill="#2a1e3c" fill-opacity=".14"/><rect x="156" y="209" width="80" height="39" rx="20" fill="#fff"/><path d="M150 258 L158 247 L174 247 Z" fill="#fff"/><text x="196" y="236" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="21" fill="#3c3c44">abc~</text></g><g class="bubble" style="animation-delay:1.4s"><rect x="1160" y="205" width="156" height="39" rx="20" fill="#2a1e3c" fill-opacity=".14"/><rect x="1160" y="203" width="156" height="39" rx="20" fill="#fff"/><path d="M1322 252 L1298 241 L1314 241 Z" fill="#fff"/><text x="1238" y="230" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="21" fill="#3c3c44">blah blah~</text></g><g class="bubble" style="animation-delay:2.6s"><rect x="1558" y="219" width="80" height="39" rx="20" fill="#2a1e3c" fill-opacity=".14"/><rect x="1558" y="217" width="80" height="39" rx="20" fill="#fff"/><path d="M1552 266 L1560 255 L1576 255 Z" fill="#fff"/><text x="1598" y="244" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="21" fill="#3c3c44">abc!</text></g></g>
       <g class="notes"><text class="mnote" x="1048" y="566" font-size="30" fill="#4c6ef5" style="animation-delay:0s">♪</text><text class="mnote" x="1062" y="558" font-size="30" fill="#e64980" style="animation-delay:1.1s">♫</text><text class="mnote" x="1054" y="574" font-size="30" fill="#ff6a3d" style="animation-delay:2.2s">♪</text></g>
 
     </g>
 
     <!-- ===== DEVELOPER (images/developer.png), aligned so both green screens coincide ===== -->
     <g id="devLayer" transform="translate(363.18 438.96) scale(0.456796)">
-      <image href="images/developer.jpg" width="1672" height="941" mask="url(#devFade)"/>
-      <ellipse class="glow" cx="597" cy="440" rx="560" ry="360" fill="url(#screenGlow)" style="mix-blend-mode:screen"/>
-      <g class="steamB" filter="url(#soft)" stroke="#fff" stroke-linecap="round" fill="none" stroke-width="10">
+      <image href="images/developer.webp" width="1672" height="941"/>
+      <ellipse class="glow" cx="597" cy="440" rx="560" ry="360" fill="url(#screenGlow)"/>
+      <g class="steamB" stroke="#fff" stroke-opacity=".6" stroke-linecap="round" fill="none" stroke-width="10">
         <path d="M352 700 q-18 -28 0 -56 q18 -28 0 -56"/><path d="M380 704 q-18 -28 0 -56 q18 -28 0 -56"/>
       </g>
       <g class="notes"><text class="mnote" x="1372" y="232" font-size="68" fill="#4c6ef5" style="animation-delay:0s">♪</text><text class="mnote" x="1404" y="220" font-size="68" fill="#e64980" style="animation-delay:1.1s">♫</text><text class="mnote" x="1384" y="246" font-size="68" fill="#ff6a3d" style="animation-delay:2.2s">♪</text></g>
@@ -605,20 +600,28 @@
   const devLayer = document.getElementById('devLayer');
   let cam = { ...CAMS[0] };
 
-  // render loop: camera + developer/office crossfade
-  function render() {
-    const h = cam.w * 9 / 16;
-    world.setAttribute('viewBox', `${cam.cx - cam.w / 2} ${cam.cy - h / 2} ${cam.w} ${h}`);
-    devLayer.style.opacity = Math.max(0, Math.min(1, (1.75 * DEV.w - cam.w) / (0.75 * DEV.w)));
-    requestAnimationFrame(render);
+  // camera: redraw only when it moves (no per-frame loop while idle)
+  function applyCam(c) {
+    const h = c.w * 9 / 16;
+    world.setAttribute('viewBox', `${c.cx - c.w / 2} ${c.cy - h / 2} ${c.w} ${h}`);
+    const o = Math.max(0, Math.min(1, (1.75 * DEV.w - c.w) / (0.75 * DEV.w)));
+    devLayer.style.opacity = o;
+    devLayer.style.visibility = o === 0 ? 'hidden' : 'visible';
   }
-  requestAnimationFrame(render);
+  applyCam(cam);
+  // hide the intro world entirely (and stop its animations) while the Lovable screen / slides are up
+  function setWorldVisible(on) {
+    world.style.opacity = on ? 1 : 0;
+    clearTimeout(setWorldVisible.t);
+    if (on) world.classList.remove('asleep');
+    else setWorldVisible.t = setTimeout(() => world.classList.add('asleep'), 1100);
+  }
 
   let raf = null;
   const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   function flyTo(target, dur = 1700) {
     cancelAnimationFrame(raf);
-    if (dur <= 1) { cam = { ...target }; return; }
+    if (dur <= 1) { cam = { ...target }; applyCam(cam); return; }
     const from = { ...cam }, t0 = performance.now();
     const lw0 = Math.log(from.w), lw1 = Math.log(target.w);
     const step = now => {
@@ -626,6 +629,7 @@
       const w = Math.exp(lw0 + (lw1 - lw0) * e);
       const z = (lw1 === lw0) ? e : (Math.log(w) - lw0) / (lw1 - lw0);
       cam = { cx: from.cx + (target.cx - from.cx) * z, cy: from.cy + (target.cy - from.cy) * z, w };
+      applyCam(cam);
       if (t < 1) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
@@ -636,7 +640,7 @@
     const g = document.getElementById('dust');
     let rnd = 7; const r = () => (rnd = (rnd * 16807) % 2147483647) / 2147483647;
     let out = '';
-    for (let i = 0; i < 46; i++) {
+    for (let i = 0; i < 22; i++) {
       const x = 430 + r() * 760, y = 140 + r() * 520, rad = 1.4 + r() * 2.6;
       const dur = (9 + r() * 10).toFixed(1), delay = (-r() * 18).toFixed(1);
       out += `<circle class="mote" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${rad.toFixed(1)}" style="animation-duration:${dur}s;animation-delay:${delay}s"/>`;
@@ -732,7 +736,7 @@
     [...dots.children].forEach((d, k) => d.classList.toggle('on', k === i));
 
     if (i < 3) {
-      resetUI(); world.style.opacity = 1;
+      resetUI(); setWorldVisible(true);
       if (i === 0) { flyTo(CAMS[0], prev === -1 ? 1 : 1700); later(typeCode, prev === -1 ? 300 : 1700); }
       else { finishCode(); flyTo(CAMS[i]); }
       // narration waits for a click; autoplay triggers it on a timer instead
@@ -743,7 +747,7 @@
       }
     } else {
       // straight crossfade from the office to the Lovable screen (no zoom-out)
-      finishCode(); world.style.opacity = 0; playUI();
+      finishCode(); setWorldVisible(false); playUI();
     }
   }
 
