@@ -298,7 +298,15 @@
   @keyframes beam { 0%, 100% { opacity: .35; } 50% { opacity: .75; } }
   .beams polygon { animation: beam 7s ease-in-out infinite; }
   .beams polygon.b2 { animation-delay: -3.5s; }
+  /* music notes from headphones, speech bubbles */
+  @keyframes noteFloat { 0% { opacity: 0; transform: translate(0, 0) rotate(-12deg); } 15% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--nx, 26px), var(--ny, -52px)) rotate(14deg); } }
+  .mnote { font-family: "Segoe UI Symbol", "Apple Symbols", "Noto Sans Symbols 2", sans-serif; font-weight: 700; animation: noteFloat 3.3s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+  #devLayer .mnote { --nx: 90px; --ny: -150px; }
+  #officeLayer .mnote { --nx: 34px; --ny: -64px; }
+  @keyframes talk { 0%, 100% { opacity: 0; transform: scale(.6); } 8%, 40% { opacity: 1; transform: scale(1); } 50% { opacity: 0; transform: scale(.92); } }
+  .bubble { opacity: 0; animation: talk 4.2s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
   @media (prefers-reduced-motion: reduce) {
+    .mnote, .bubble { animation: none; }
     .steamA path, .steamB path, .mote, .beams polygon, .glow { animation: none; }
   }
 </style>
@@ -317,6 +325,7 @@
       </linearGradient>
       <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
       <filter id="softSm" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
+      <filter id="bshadow" x="-20%" y="-30%" width="140%" height="180%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#2a1e3c" flood-opacity=".18"/></filter>
       <filter id="maskBlur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="22"/></filter>
       <mask id="devFade" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
         <rect x="10" y="10" width="1652" height="921" fill="#fff" filter="url(#maskBlur)"/>
@@ -339,6 +348,10 @@
         <path d="M548 782 q-8 -12 0 -24 q8 -12 0 -24"/><path d="M562 784 q-8 -12 0 -24 q8 -12 0 -24"/>
       </g>
       <ellipse class="glow" cx="664" cy="668" rx="230" ry="150" fill="url(#screenGlow)" style="mix-blend-mode:screen"/>
+      <!-- people talking + music from the hero's headphones -->
+      <g class="talk"><g class="bubble" style="animation-delay:0s"><rect x="156" y="209" width="80" height="39" rx="20" fill="#fff" filter="url(#bshadow)"/><path d="M150 258 L158 247 L174 247 Z" fill="#fff"/><text x="196" y="236" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="21" fill="#3c3c44">abc~</text></g><g class="bubble" style="animation-delay:1.4s"><rect x="1160" y="203" width="156" height="39" rx="20" fill="#fff" filter="url(#bshadow)"/><path d="M1322 252 L1298 241 L1314 241 Z" fill="#fff"/><text x="1238" y="230" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="21" fill="#3c3c44">blah blah~</text></g><g class="bubble" style="animation-delay:2.6s"><rect x="1558" y="217" width="80" height="39" rx="20" fill="#fff" filter="url(#bshadow)"/><path d="M1552 266 L1560 255 L1576 255 Z" fill="#fff"/><text x="1598" y="244" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="21" fill="#3c3c44">abc!</text></g></g>
+      <g class="notes"><text class="mnote" x="1048" y="566" font-size="30" fill="#4c6ef5" style="animation-delay:0s">♪</text><text class="mnote" x="1062" y="558" font-size="30" fill="#e64980" style="animation-delay:1.1s">♫</text><text class="mnote" x="1054" y="574" font-size="30" fill="#ff6a3d" style="animation-delay:2.2s">♪</text></g>
+
     </g>
 
     <!-- ===== DEVELOPER (images/developer.png), aligned so both green screens coincide ===== -->
@@ -348,6 +361,8 @@
       <g class="steamB" filter="url(#soft)" stroke="#fff" stroke-linecap="round" fill="none" stroke-width="10">
         <path d="M352 700 q-18 -28 0 -56 q18 -28 0 -56"/><path d="M380 704 q-18 -28 0 -56 q18 -28 0 -56"/>
       </g>
+      <g class="notes"><text class="mnote" x="1372" y="232" font-size="68" fill="#4c6ef5" style="animation-delay:0s">♪</text><text class="mnote" x="1404" y="220" font-size="68" fill="#e64980" style="animation-delay:1.1s">♫</text><text class="mnote" x="1384" y="246" font-size="68" fill="#ff6a3d" style="animation-delay:2.2s">♪</text></g>
+
     </g>
 
     <!-- ===== CODE (live, over the green screen; 1600 x 900 frame) ===== -->
@@ -590,17 +605,11 @@
   const devLayer = document.getElementById('devLayer');
   let cam = { ...CAMS[0] };
 
-  // render loop: camera + slow "Ken Burns" drift + developer/office crossfade
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function render(now) {
-    const t = now / 1000, amp = reduceMotion ? 0 : 1;
-    const zoom = 0.975 - amp * 0.012 * (0.5 + 0.5 * Math.sin(t * 0.21));   // always slightly zoomed in → no edges show
-    const w = cam.w * zoom, h = w * 9 / 16;
-    const cx = cam.cx + amp * cam.w * 0.005 * Math.sin(t * 0.33);
-    const cy = cam.cy + amp * cam.w * 0.004 * Math.cos(t * 0.27);
-    world.setAttribute('viewBox', `${cx - w / 2} ${cy - h / 2} ${w} ${h}`);
-    const o = Math.max(0, Math.min(1, (1.75 * DEV.w - cam.w) / (0.75 * DEV.w)));
-    devLayer.style.opacity = o;
+  // render loop: camera + developer/office crossfade
+  function render() {
+    const h = cam.w * 9 / 16;
+    world.setAttribute('viewBox', `${cam.cx - cam.w / 2} ${cam.cy - h / 2} ${cam.w} ${h}`);
+    devLayer.style.opacity = Math.max(0, Math.min(1, (1.75 * DEV.w - cam.w) / (0.75 * DEV.w)));
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
@@ -733,8 +742,8 @@
         later(() => auto && show(i + 1), NARR_AT[i] + HOLD[i] + extra);
       }
     } else {
-      finishCode(); flyTo(CAMS[3], 2200);
-      later(() => { world.style.opacity = 0; playUI(); }, 900);
+      // straight crossfade from the office to the Lovable screen (no zoom-out)
+      finishCode(); world.style.opacity = 0; playUI();
     }
   }
 
