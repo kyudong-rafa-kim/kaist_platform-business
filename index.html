@@ -34,7 +34,7 @@
     width: 1600px; height: 900px;
     transform-origin: 0 0;
     overflow: hidden;
-    background: #cdb89c;
+    background: #efe6dc;
     cursor: pointer;
   }
   #world { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity 1s ease; }
@@ -288,8 +288,19 @@
   @keyframes steam { 0% { opacity: 0; transform: translateY(10px); } 40% { opacity: .7; } 100% { opacity: 0; transform: translateY(-30px); } }
   .steam path { animation: steam 2.6s ease-in-out infinite; }
   .steam path:nth-child(2) { animation-delay: 1.2s; }
-  @keyframes walk { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(46px); } }
-  .walk { animation: walk 9s ease-in-out infinite; }
+  /* ---- intro image motion ---- */
+  @keyframes rise { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: .75; } 100% { opacity: 0; transform: translateY(var(--rise, -40px)); } }
+  .steamA path, .steamB path { animation: rise 3.2s ease-out infinite; }
+  .steamA path:nth-child(2), .steamB path:nth-child(2) { animation-delay: 1.6s; }
+  .steamA { --rise: -26px; } .steamB { --rise: -70px; }
+  @keyframes mote { 0% { opacity: 0; transform: translate(0, 0); } 20% { opacity: .8; } 80% { opacity: .6; } 100% { opacity: 0; transform: translate(26px, -60px); } }
+  .mote { fill: #fff; animation: mote 14s ease-in-out infinite; }
+  @keyframes beam { 0%, 100% { opacity: .35; } 50% { opacity: .75; } }
+  .beams polygon { animation: beam 7s ease-in-out infinite; }
+  .beams polygon.b2 { animation-delay: -3.5s; }
+  @media (prefers-reduced-motion: reduce) {
+    .steamA path, .steamB path, .mote, .beams polygon, .glow { animation: none; }
+  }
 </style>
 </head>
 <body>
@@ -298,293 +309,49 @@
   <!-- ===================== WORLD (one nested scene; the camera is the viewBox) ===================== -->
   <svg id="world" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#8fb8e0"/><stop offset="1" stop-color="#e3edf5"/>
-      </linearGradient>
-      <linearGradient id="deskTop" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#c79a6f"/><stop offset="1" stop-color="#b4875d"/>
-      </linearGradient>
-      <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#dfeef7" stop-opacity=".75"/><stop offset="1" stop-color="#b9d3e3" stop-opacity=".55"/>
-      </linearGradient>
-      <radialGradient id="screenGlow" cx=".5" cy=".5" r=".6">
-        <stop offset="0" stop-color="#7aa2ff" stop-opacity=".35"/><stop offset="1" stop-color="#7aa2ff" stop-opacity="0"/>
+      <radialGradient id="screenGlow" cx=".5" cy=".5" r=".5">
+        <stop offset="0" stop-color="#9db4ff" stop-opacity=".55"/><stop offset="1" stop-color="#9db4ff" stop-opacity="0"/>
       </radialGradient>
-
-      <!-- generic code lines for background monitors (432 x 243) -->
-      <symbol id="codeSimple" viewBox="0 0 432 243">
-        <rect width="432" height="243" fill="#1e1e2e"/>
-        <rect width="432" height="16" fill="#181825"/>
-        <rect width="70" height="243" y="16" fill="#181825"/>
-        <g>
-          <rect x="88" y="32"  width="110" height="9" rx="4" fill="#c792ea"/><rect x="206" y="32" width="80" height="9" rx="4" fill="#c3e88d"/>
-          <rect x="88" y="52"  width="64"  height="9" rx="4" fill="#c792ea"/><rect x="160" y="52" width="140" height="9" rx="4" fill="#82aaff"/>
-          <rect x="108" y="72" width="180" height="9" rx="4" fill="#eeffff"/>
-          <rect x="108" y="92" width="120" height="9" rx="4" fill="#89ddff"/><rect x="236" y="92" width="100" height="9" rx="4" fill="#c3e88d"/>
-          <rect x="128" y="112" width="160" height="9" rx="4" fill="#eeffff"/>
-          <rect x="128" y="132" width="80"  height="9" rx="4" fill="#f78c6c"/><rect x="216" y="132" width="120" height="9" rx="4" fill="#82aaff"/>
-          <rect x="108" y="152" width="50"  height="9" rx="4" fill="#89ddff"/>
-          <rect x="88" y="172" width="210" height="9" rx="4" fill="#82aaff"/>
-          <rect x="88" y="192" width="28"  height="9" rx="4" fill="#89ddff"/>
-        </g>
-        <rect y="231" width="432" height="12" fill="#3b5bdb"/>
-      </symbol>
-
-      <!-- terminal for the portrait monitor (120 x 230) -->
-      <symbol id="terminal" viewBox="0 0 120 230">
-        <rect width="120" height="230" fill="#0f1117"/>
-        <g fill="#40c057"><rect x="8" y="12" width="60" height="5" rx="2"/><rect x="8" y="48" width="44" height="5" rx="2"/><rect x="8" y="84" width="70" height="5" rx="2"/><rect x="8" y="132" width="52" height="5" rx="2"/></g>
-        <g fill="#868e96"><rect x="8" y="24" width="90" height="5" rx="2"/><rect x="8" y="36" width="76" height="5" rx="2"/><rect x="8" y="60" width="98" height="5" rx="2"/><rect x="8" y="72" width="64" height="5" rx="2"/>
-          <rect x="8" y="96" width="88" height="5" rx="2"/><rect x="8" y="108" width="100" height="5" rx="2"/><rect x="8" y="120" width="58" height="5" rx="2"/><rect x="8" y="144" width="94" height="5" rx="2"/><rect x="8" y="156" width="72" height="5" rx="2"/></g>
-        <rect x="8" y="172" width="8" height="10" fill="#e9ecef"/>
-      </symbol>
-
-      <!-- ============ developer at a desk, drawn in a 1600 x 900 frame ============
-           main screen slot: x580 y170 w432 h243 (filled by whoever uses this symbol) -->
-      <symbol id="devBase" viewBox="0 0 1600 900" overflow="visible">
-        <!-- cubicle partition -->
-        <rect x="280" y="60" width="1160" height="520" rx="24" fill="#9eabbd"/>
-        <rect x="298" y="84" width="1124" height="478" rx="16" fill="#b9c4d2"/>
-        <rect x="280" y="60" width="1160" height="20" rx="10" fill="#8796ab"/>
-        <!-- pinned: burndown chart + sticky notes -->
-        <g transform="rotate(-2 400 180)">
-          <rect x="320" y="110" width="170" height="124" rx="4" fill="#fbfbfa"/>
-          <path d="M334 132 L334 220 L476 220" stroke="#adb5bd" stroke-width="3" fill="none"/>
-          <path d="M338 140 L380 162 L410 158 L440 190 L470 212" stroke="#e8453c" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <path d="M338 140 L470 214" stroke="#adb5bd" stroke-width="2" stroke-dasharray="6 6"/>
-          <circle cx="405" cy="114" r="6" fill="#e8453c"/>
-        </g>
-        <rect x="1300" y="110" width="74" height="74" rx="4" fill="#ffe08a" transform="rotate(5 1337 147)"/>
-        <rect x="1312" y="128" width="46" height="6" rx="3" fill="#d4a72c" transform="rotate(5 1337 147)"/>
-        <rect x="1312" y="144" width="34" height="6" rx="3" fill="#d4a72c" transform="rotate(5 1337 147)"/>
-        <rect x="1300" y="200" width="74" height="74" rx="4" fill="#a5d8ff" transform="rotate(-4 1337 237)"/>
-        <rect x="1312" y="220" width="46" height="6" rx="3" fill="#4dabf7" transform="rotate(-4 1337 237)"/>
-
-        <!-- floor shadow -->
-        <ellipse cx="860" cy="872" rx="660" ry="26" fill="#000" opacity=".14"/>
-
-        <!-- floor plant -->
-        <g>
-          <path d="M236 770 C190 700 170 660 196 610 C230 660 240 720 246 770 Z" fill="#2f9e44"/>
-          <path d="M250 770 C260 690 300 640 330 620 C326 680 300 730 262 772 Z" fill="#37b24d"/>
-          <path d="M244 770 C230 700 240 620 266 580 C280 640 270 710 254 770 Z" fill="#2b8a3e"/>
-          <path d="M212 760 h80 l-10 100 h-60 z" fill="#d9480f"/>
-          <rect x="206" y="752" width="92" height="18" rx="6" fill="#e8590c"/>
-        </g>
-
-        <!-- desk -->
-        <rect x="360" y="556" width="800" height="18" rx="5" fill="url(#deskTop)"/>
-        <rect x="360" y="574" width="800" height="20" fill="#8a6447"/>
-        <rect x="380" y="594" width="190" height="270" rx="6" fill="#9a7252"/>
-        <g stroke="#7a573c" stroke-width="3"><path d="M380 684 H570 M380 774 H570"/></g>
-        <g fill="#5c4130"><rect x="450" y="634" width="50" height="8" rx="4"/><rect x="450" y="724" width="50" height="8" rx="4"/><rect x="450" y="814" width="50" height="8" rx="4"/></g>
-        <rect x="1122" y="594" width="22" height="272" fill="#7a573c"/>
-
-        <!-- portrait monitor with a terminal -->
-        <rect x="404" y="168" width="146" height="262" rx="10" fill="#1b1d23"/>
-        <use href="#terminal" x="417" y="180" width="120" height="230"/>
-        <rect x="466" y="430" width="22" height="112" fill="#2a2d35"/>
-        <rect x="436" y="540" width="82" height="16" rx="8" fill="#2a2d35"/>
-
-        <!-- main monitor (screen supplied by the user of the symbol) -->
-        <rect x="566" y="158" width="460" height="271" rx="12" fill="#1b1d23"/>
-        <rect x="566" y="158" width="460" height="6" rx="3" fill="#2c3039"/>
-        <path d="M778 429 h36 l-6 112 h-24 z" fill="#2a2d35"/>
-        <rect x="728" y="538" width="136" height="18" rx="9" fill="#2a2d35"/>
-        <rect x="740" y="538" width="112" height="4" rx="2" fill="#3a3f4a"/>
-
-        <!-- coffee mug with steam -->
-        <g class="steam" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9">
-          <path d="M636 486 q-10 -16 0 -32 q10 -16 0 -32"/>
-          <path d="M656 486 q-10 -16 0 -32 q10 -16 0 -32"/>
-        </g>
-        <rect x="618" y="494" width="58" height="62" rx="8" fill="#f8f9fa"/>
-        <rect x="618" y="512" width="58" height="12" fill="#e8453c"/>
-        <path d="M676 508 q28 2 0 34" stroke="#f8f9fa" stroke-width="9" fill="none"/>
-
-        <!-- keyboard + mouse -->
-        <rect x="830" y="536" width="226" height="20" rx="5" fill="#2b2f38"/>
-        <g fill="#4a505c">
-          <rect x="840" y="540" width="206" height="4" rx="2"/><rect x="840" y="547" width="206" height="4" rx="2"/>
-        </g>
-        <rect x="1070" y="552" width="64" height="4" rx="2" fill="#3a3f4a"/>
-        <rect x="1086" y="538" width="32" height="16" rx="8" fill="#2b2f38"/>
-
-        <!-- chair (behind the person) -->
-        <path d="M1296 344 Q1352 340 1356 400 L1350 612 Q1346 630 1320 630 L1300 630 Q1286 520 1296 344 Z" style="fill:var(--chair,#343a46)"/>
-        <rect x="1306" y="356" width="10" height="250" rx="5" fill="#fff" opacity=".06"/>
-
-        <!-- legs -->
-        <path d="M1236 616 L1050 612" stroke="var(--pants,#34405a)" style="stroke:var(--pants,#34405a)" stroke-width="56" fill="none" stroke-linecap="round"/>
-        <path d="M1050 612 L1062 806" style="stroke:var(--pants,#34405a)" stroke-width="46" fill="none" stroke-linecap="round"/>
-        <path d="M1236 600 L1080 598" stroke="#fff" stroke-width="6" opacity=".08" stroke-linecap="round"/>
-        <path d="M1008 812 Q1010 790 1040 792 L1088 794 Q1106 796 1104 814 L1104 836 L1004 836 Z" fill="#f1f3f5"/>
-        <rect x="1000" y="830" width="108" height="12" rx="5" fill="#495057"/>
-
-        <!-- seat + base -->
-        <rect x="1150" y="614" width="200" height="30" rx="15" style="fill:var(--chair,#343a46)"/>
-        <rect x="1240" y="644" width="20" height="140" fill="#212529"/>
-        <path d="M1150 836 L1250 782 L1350 836 M1250 782 L1250 840" stroke="#212529" stroke-width="14" fill="none" stroke-linecap="round"/>
-        <g fill="#111"><circle cx="1150" cy="846" r="12"/><circle cx="1250" cy="848" r="12"/><circle cx="1350" cy="846" r="12"/></g>
-
-        <!-- person: profile, facing the monitor -->
-        <g class="bob">
-          <!-- torso (hoodie) -->
-          <path d="M1176 428 C1198 398 1272 402 1294 440 C1310 500 1306 574 1298 624 L1172 624 C1158 560 1156 482 1176 428 Z" style="fill:var(--hoodie,#4c6ef5)"/>
-          <path d="M1262 410 C1286 418 1300 436 1306 470 C1312 540 1306 590 1298 624 L1272 624 C1282 560 1286 480 1262 410 Z" fill="#000" opacity=".14"/>
-          <!-- hood -->
-          <path d="M1222 396 C1252 384 1290 396 1300 428 C1300 448 1286 454 1268 446 C1256 426 1240 414 1222 410 Z" style="fill:var(--hoodie,#4c6ef5)"/>
-          <path d="M1222 396 C1252 384 1290 396 1300 428 C1300 448 1286 454 1268 446 C1256 426 1240 414 1222 410 Z" fill="#000" opacity=".18"/>
-          <!-- drawstrings -->
-          <path d="M1190 436 L1186 476 M1202 438 L1200 470" stroke="#f1f3f5" stroke-width="4" stroke-linecap="round"/>
-          <!-- neck -->
-          <rect x="1194" y="372" width="32" height="44" rx="12" style="fill:var(--skin,#f1c7a5)"/>
-          <!-- head -->
-          <circle cx="1206" cy="330" r="56" style="fill:var(--skin,#f1c7a5)"/>
-          <path d="M1152 320 L1138 340 L1154 344 Z" style="fill:var(--skin,#f1c7a5)"/>
-          <!-- hair -->
-          <path d="M1152 316 C1150 262 1196 252 1230 262 C1268 274 1272 318 1258 352 C1252 334 1242 322 1226 318 C1210 300 1180 300 1160 312 Z" style="fill:var(--hair,#2b211c)"/>
-          <!-- ear + headphones -->
-          <path d="M1166 300 C1170 254 1252 248 1262 318" stroke="#212529" stroke-width="12" fill="none" stroke-linecap="round"/>
-          <rect x="1226" y="306" width="40" height="56" rx="18" fill="#212529"/>
-          <rect x="1234" y="316" width="24" height="36" rx="12" style="fill:var(--cup,#ff6b6b)"/>
-          <!-- glasses + eye + mouth -->
-          <rect x="1150" y="316" width="30" height="20" rx="6" fill="none" stroke="#212529" stroke-width="4"/>
-          <path d="M1180 324 L1226 322" stroke="#212529" stroke-width="3"/>
-          <circle cx="1162" cy="326" r="3.5" fill="#212529"/>
-          <path d="M1160 360 q8 4 16 0" stroke="#9c5c42" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <!-- arm to the keyboard -->
-          <path d="M1222 446 Q1188 500 1168 548 L1070 550" style="stroke:var(--hoodie,#4c6ef5)" stroke-width="40" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M1222 446 Q1188 500 1168 548 L1070 550" stroke="#000" stroke-opacity=".08" stroke-width="40" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="1062" y="530" width="16" height="40" rx="6" fill="#f1f3f5" opacity=".85"/>
-          <path d="M1062 538 C1046 536 1030 540 1028 548 C1030 556 1046 560 1062 558 Z" style="fill:var(--skin,#f1c7a5)"/>
-        </g>
-
-        <!-- armrest (in front of the body) -->
-        <rect x="1196" y="560" width="120" height="16" rx="8" fill="#212529"/>
-        <rect x="1250" y="576" width="14" height="40" fill="#212529"/>
-      </symbol>
-
-      <!-- ============ standing person (200 x 500, feet at the bottom) ============ -->
-      <symbol id="stander" viewBox="0 0 200 500" overflow="visible">
-        <ellipse cx="100" cy="494" rx="70" ry="10" fill="#000" opacity=".15"/>
-        <path d="M78 300 L72 478 M122 300 L128 478" style="stroke:var(--pants,#495057)" stroke-width="34" stroke-linecap="round"/>
-        <rect x="46" y="470" width="50" height="22" rx="10" fill="#212529"/><rect x="104" y="470" width="50" height="22" rx="10" fill="#212529"/>
-        <path d="M52 150 C60 128 140 128 148 150 L156 310 L44 310 Z" style="fill:var(--top,#e64980)"/>
-        <path d="M54 162 L30 250 L38 300" style="stroke:var(--top,#e64980)" stroke-width="28" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="40" cy="306" r="13" style="fill:var(--skin,#f1c7a5)"/>
-        <rect x="86" y="110" width="28" height="30" rx="10" style="fill:var(--skin,#f1c7a5)"/>
-        <circle cx="100" cy="82" r="44" style="fill:var(--skin,#f1c7a5)"/>
-        <path d="M56 80 C52 30 148 30 144 80 C136 62 118 54 100 56 C82 54 64 62 56 80 Z" style="fill:var(--hair,#2b211c)"/>
-      </symbol>
+      <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff8e8" stop-opacity=".55"/><stop offset="1" stop-color="#fff8e8" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+      <filter id="softSm" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
+      <filter id="maskBlur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="22"/></filter>
+      <mask id="devFade" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+        <rect x="10" y="10" width="1652" height="921" fill="#fff" filter="url(#maskBlur)"/>
+      </mask>
     </defs>
 
-    <!-- ===================== OFFICE (world frame 1600 x 900) ===================== -->
-    <g id="office">
-      <!-- ceiling + wall -->
-      <rect width="1600" height="360" fill="#ece5da"/>
-      <rect width="1600" height="44" fill="#f6f2ec"/>
-      <rect y="44" width="1600" height="4" fill="#ddd4c6"/>
-      <rect y="340" width="1600" height="20" fill="#ddd2c2"/>
-      <!-- wooden floor -->
-      <rect y="360" width="1600" height="540" fill="#cdb89c"/>
-      <g stroke="#bfa888" stroke-width="2">
-        <path d="M0 392 H1600 M0 432 H1600 M0 482 H1600 M0 544 H1600 M0 620 H1600 M0 712 H1600 M0 824 H1600"/>
+    <!-- ===== OFFICE (images/office.png, 1672x941 px → world 1600x900) ===== -->
+    <g id="officeLayer" transform="scale(0.956938)">
+      <image href="images/office.jpg" width="1672" height="941"/>
+      <!-- window light beams -->
+      <g class="beams" style="mix-blend-mode:screen">
+        <polygon points="560,120 700,120 420,941 120,941" fill="url(#beam)"/>
+        <polygon points="800,120 950,120 760,941 480,941" fill="url(#beam)"/>
+        <polygon points="960,120 1110,120 1060,941 800,941" fill="url(#beam)" class="b2"/>
       </g>
-      <g stroke="#bfa888" stroke-width="2">
-        <path d="M210 360 V392 M640 360 V392 M1080 360 V392 M420 392 V432 M900 392 V432 M1340 392 V432 M120 432 V482 M700 432 V482 M1260 432 V482 M360 482 V544 M980 482 V544 M180 544 V620 M820 544 V620 M1440 544 V620 M520 620 V712 M1160 620 V712 M300 712 V824 M1000 712 V824"/>
+      <!-- floating dust in the window light (filled by script) -->
+      <g id="dust"></g>
+      <!-- steam over the hero's mug -->
+      <g class="steamA" filter="url(#softSm)" stroke="#fff" stroke-linecap="round" fill="none" stroke-width="4">
+        <path d="M548 782 q-8 -12 0 -24 q8 -12 0 -24"/><path d="M562 784 q-8 -12 0 -24 q8 -12 0 -24"/>
       </g>
-      <!-- ceiling lights -->
-      <g>
-        <path d="M300 48 V78 M800 48 V78 M1300 48 V78" stroke="#868e96" stroke-width="2"/>
-        <rect x="220" y="78" width="160" height="10" rx="5" fill="#495057"/><rect x="226" y="86" width="148" height="4" rx="2" fill="#fff3bf"/>
-        <rect x="720" y="78" width="160" height="10" rx="5" fill="#495057"/><rect x="726" y="86" width="148" height="4" rx="2" fill="#fff3bf"/>
-        <rect x="1220" y="78" width="160" height="10" rx="5" fill="#495057"/><rect x="1226" y="86" width="148" height="4" rx="2" fill="#fff3bf"/>
+      <ellipse class="glow" cx="664" cy="668" rx="230" ry="150" fill="url(#screenGlow)" style="mix-blend-mode:screen"/>
+    </g>
+
+    <!-- ===== DEVELOPER (images/developer.png), aligned so both green screens coincide ===== -->
+    <g id="devLayer" transform="translate(363.18 438.96) scale(0.456796)">
+      <image href="images/developer.jpg" width="1672" height="941" mask="url(#devFade)"/>
+      <ellipse class="glow" cx="597" cy="440" rx="560" ry="360" fill="url(#screenGlow)" style="mix-blend-mode:screen"/>
+      <g class="steamB" filter="url(#soft)" stroke="#fff" stroke-linecap="round" fill="none" stroke-width="10">
+        <path d="M352 700 q-18 -28 0 -56 q18 -28 0 -56"/><path d="M380 704 q-18 -28 0 -56 q18 -28 0 -56"/>
       </g>
+    </g>
 
-      <!-- kanban board (left wall) -->
-      <g>
-        <rect x="70" y="110" width="400" height="200" rx="8" fill="#fdfdfc"/>
-        <rect x="70" y="110" width="400" height="200" rx="8" fill="none" stroke="#adb5bd" stroke-width="6"/>
-        <text x="90" y="140" font-family="Inter, sans-serif" font-weight="800" font-size="16" fill="#495057">SPRINT 42</text>
-        <g font-family="Inter, sans-serif" font-weight="700" font-size="12" fill="#868e96">
-          <text x="96" y="166">TO DO</text><text x="226" y="166">DOING</text><text x="356" y="166">DONE</text>
-        </g>
-        <path d="M206 154 V296 M336 154 V296" stroke="#dee2e6" stroke-width="3"/>
-        <g>
-          <rect x="94" y="176" width="44" height="34" rx="3" fill="#ffe08a"/><rect x="146" y="178" width="44" height="34" rx="3" fill="#ffc9c9"/>
-          <rect x="94" y="218" width="44" height="34" rx="3" fill="#a5d8ff"/><rect x="146" y="222" width="44" height="34" rx="3" fill="#ffe08a"/>
-          <rect x="94" y="260" width="44" height="34" rx="3" fill="#ffc9c9"/>
-          <rect x="224" y="178" width="44" height="34" rx="3" fill="#b2f2bb"/><rect x="276" y="176" width="44" height="34" rx="3" fill="#a5d8ff"/>
-          <rect x="224" y="220" width="44" height="34" rx="3" fill="#ffe08a"/>
-          <rect x="354" y="176" width="44" height="34" rx="3" fill="#b2f2bb"/><rect x="406" y="180" width="44" height="34" rx="3" fill="#b2f2bb"/>
-          <rect x="354" y="220" width="44" height="34" rx="3" fill="#a5d8ff"/><rect x="406" y="224" width="44" height="34" rx="3" fill="#ffc9c9"/>
-          <rect x="354" y="262" width="44" height="34" rx="3" fill="#ffe08a"/>
-        </g>
-      </g>
-
-      <!-- windows (centre) -->
-      <g>
-        <rect x="560" y="100" width="480" height="230" rx="6" fill="url(#sky)"/>
-        <g fill="#adc4d8">
-          <rect x="574" y="200" width="54" height="130"/><rect x="636" y="160" width="62" height="170"/><rect x="706" y="220" width="44" height="110"/>
-          <rect x="758" y="140" width="70" height="190"/><rect x="836" y="190" width="56" height="140"/><rect x="900" y="170" width="60" height="160"/><rect x="968" y="214" width="62" height="116"/>
-        </g>
-        <g fill="#e9f2f9" opacity=".8">
-          <rect x="648" y="176" width="8" height="10"/><rect x="668" y="176" width="8" height="10"/><rect x="648" y="200" width="8" height="10"/><rect x="772" y="160" width="8" height="10"/><rect x="792" y="160" width="8" height="10"/><rect x="772" y="186" width="8" height="10"/><rect x="912" y="188" width="8" height="10"/><rect x="932" y="210" width="8" height="10"/>
-        </g>
-        <g stroke="#f8f5f0" stroke-width="10" fill="none">
-          <rect x="560" y="100" width="480" height="230" rx="6"/><path d="M720 100 V330 M880 100 V330"/>
-        </g>
-      </g>
-
-      <!-- glass meeting room (right) -->
-      <g>
-        <rect x="1120" y="96" width="420" height="264" fill="#dbe7ef"/>
-        <rect x="1170" y="130" width="150" height="88" rx="4" fill="#212529"/>
-        <g fill="#4dabf7"><rect x="1186" y="186" width="18" height="22"/><rect x="1212" y="170" width="18" height="38"/><rect x="1238" y="158" width="18" height="50"/><rect x="1264" y="146" width="18" height="62"/></g>
-        <path d="M1188 160 L1290 140" stroke="#ff8787" stroke-width="3"/>
-        <circle cx="1390" cy="250" r="26" fill="#c68e6a"/><path d="M1362 250 C1360 214 1420 214 1418 250 C1410 236 1372 236 1362 250 Z" fill="#1c1c1c"/>
-        <path d="M1356 290 C1360 270 1420 270 1424 290 L1424 330 L1356 330 Z" fill="#7048e8"/>
-        <circle cx="1480" cy="254" r="24" fill="#f5d0b5"/><path d="M1454 252 C1452 218 1508 218 1506 252 C1498 238 1462 238 1454 252 Z" fill="#a0522d"/>
-        <path d="M1448 292 C1452 272 1508 272 1512 292 L1512 330 L1448 330 Z" fill="#2f9e44"/>
-        <rect x="1340" y="300" width="190" height="16" rx="4" fill="#8a6447"/>
-        <rect x="1120" y="96" width="420" height="264" fill="url(#glass)"/>
-        <g stroke="#f8f9fa" stroke-width="8" fill="none"><rect x="1120" y="96" width="420" height="264"/><path d="M1330 96 V360"/></g>
-        <path d="M1150 96 L1240 360 M1370 96 L1430 360" stroke="#fff" stroke-width="14" opacity=".25"/>
-      </g>
-
-      <!-- PM at the kanban board -->
-      <use href="#stander" width="200" height="500" transform="translate(20 268) scale(.36)" style="--top:#f08c00;--hair:#5c3b28;--skin:#e0ac85"/>
-
-      <!-- back row (scale .15) -->
-      <use href="#devBase" width="1600" height="900" transform="translate(110 272) scale(.15)" style="--hoodie:#2f9e44;--hair:#5c3b28;--skin:#e0ac85;--cup:#ffd43b"/>
-      <use href="#codeSimple" width="432" height="243" transform="translate(110 272) scale(.15) translate(580 170)"/>
-      <use href="#devBase" width="1600" height="900" transform="translate(470 272) scale(.15)" style="--hoodie:#f08c00;--hair:#1c1c1c;--cup:#4dabf7"/>
-      <use href="#codeSimple" width="432" height="243" transform="translate(470 272) scale(.15) translate(580 170)"/>
-      <use href="#devBase" width="1600" height="900" transform="translate(830 272) scale(.15)" style="--hoodie:#7048e8;--hair:#a0522d;--skin:#f5d0b5"/>
-      <use href="#codeSimple" width="432" height="243" transform="translate(830 272) scale(.15) translate(580 170)"/>
-      <use href="#devBase" width="1600" height="900" transform="translate(1190 272) scale(.15)" style="--hoodie:#495057;--hair:#e0b070;--cup:#69db7c"/>
-      <use href="#codeSimple" width="432" height="243" transform="translate(1190 272) scale(.15) translate(580 170)"/>
-
-      <!-- walking colleague with coffee (aisle) -->
-      <g class="walk">
-        <use href="#stander" width="200" height="500" transform="translate(1000 300) scale(.34)" style="--top:#1098ad;--hair:#1c1c1c;--skin:#c68e6a;--pants:#343a40"/>
-        <rect x="1008" y="394" width="12" height="16" rx="3" fill="#f8f9fa"/>
-      </g>
-
-      <!-- front row (scale .22) -->
-      <use href="#devBase" width="1600" height="900" transform="translate(170 470) scale(.22)" style="--hoodie:#e64980;--hair:#2b211c;--skin:#c68e6a;--cup:#4dabf7"/>
-      <use href="#codeSimple" width="432" height="243" transform="translate(170 470) scale(.22) translate(580 170)"/>
-      <use href="#devBase" width="1600" height="900" transform="translate(1070 470) scale(.22)" style="--hoodie:#1098ad;--hair:#e0b070;--cup:#ffd43b"/>
-      <use href="#codeSimple" width="432" height="243" transform="translate(1070 470) scale(.22) translate(580 170)"/>
-
-      <!-- ===== HERO DEVELOPER (front centre) ===== -->
-      <g id="hero" transform="translate(620 470) scale(.22)">
-        <use href="#devBase" width="1600" height="900" style="--hoodie:#4c6ef5"/>
-        <ellipse class="glow" cx="796" cy="292" rx="330" ry="210" fill="url(#screenGlow)"/>
-        <!-- ===== CODE (main screen; 1600 x 900 frame scaled to 432 x 243) ===== -->
-        <g id="screen" transform="translate(580 170) scale(.27)">
+    <!-- ===== CODE (live, over the green screen; 1600 x 900 frame) ===== -->
+    <g id="screen" transform="translate(493.84 553.63) scale(0.177563 0.180667)">
           <rect width="1600" height="900" fill="#1e1e2e"/>
           <rect width="1600" height="56" fill="#181825"/>
           <circle cx="34" cy="28" r="10" fill="#ff5f57"/><circle cx="66" cy="28" r="10" fill="#febc2e"/><circle cx="98" cy="28" r="10" fill="#28c840"/>
@@ -608,18 +375,6 @@
           <g id="code" font-family="JetBrains Mono, monospace" font-size="28"></g>
           <rect y="862" width="1600" height="38" fill="#3b5bdb"/>
           <text x="20" y="888" font-family="JetBrains Mono, monospace" font-size="18" fill="#fff">⎇ main   TypeScript React   Ln 14, Col 3   UTF-8</text>
-        </g>
-      </g>
-
-      <!-- front plants -->
-      <g>
-        <path d="M86 790 C50 720 40 690 66 650 C90 700 96 750 96 790 Z" fill="#2f9e44"/>
-        <path d="M100 790 C110 720 140 680 170 666 C164 720 140 760 110 792 Z" fill="#37b24d"/>
-        <path d="M64 784 h76 l-10 90 h-56 z" fill="#d9480f"/>
-        <path d="M1504 790 C1468 720 1458 690 1484 650 C1508 700 1514 750 1514 790 Z" fill="#2f9e44"/>
-        <path d="M1518 790 C1528 720 1558 680 1588 666 C1582 720 1558 760 1528 792 Z" fill="#37b24d"/>
-        <path d="M1482 784 h76 l-10 90 h-56 z" fill="#d9480f"/>
-      </g>
     </g>
   </svg>
 
@@ -821,24 +576,40 @@
   }
   function finishCode() { clearInterval(typingTimer); renderCode(TOTAL); }
 
-  /* ---------- camera ---------- */
-  const HERO = { x: 620, y: 470, s: .22 };
-  const SCREEN = { x: 580, y: 170, w: 432 };
-  const rect = (x, y, w) => ({ cx: x + w / 2, cy: y + (w * 9 / 16) / 2, w });
+  /* ---------- camera ----------
+     World = office.png scaled to 1600x900. developer.png sits inside it (devLayer) so that
+     both green screens coincide; the live code screen covers that spot. */
+  const DEV = { x: 363.18, y: 438.96, w: 763.80 };                 // developer.png frame in world units
   const CAMS = [
-    rect(HERO.x + SCREEN.x * HERO.s, HERO.y + SCREEN.y * HERO.s, SCREEN.w * HERO.s), // 0: code
-    rect(HERO.x, HERO.y, 1600 * HERO.s),                                             // 1: developer
-    rect(0, 0, 1600),                                                                // 2: office
-    { cx: 800, cy: 450, w: 1600 * 5 },                                               // 3: beyond
+    { cx: 635.89, cy: 634.93, w: 282.30 },                          // 0: code (the green screen)
+    { cx: DEV.x + DEV.w / 2, cy: DEV.y + DEV.w * 9 / 32, w: DEV.w }, // 1: developer
+    { cx: 800, cy: 450, w: 1600 },                                  // 2: office
+    { cx: 800, cy: 450, w: 1600 * 5 },                              // 3: beyond
   ];
   const world = document.getElementById('world');
+  const devLayer = document.getElementById('devLayer');
   let cam = { ...CAMS[0] };
-  const applyCam = c => { const h = c.w * 9 / 16; world.setAttribute('viewBox', `${c.cx - c.w / 2} ${c.cy - h / 2} ${c.w} ${h}`); };
-  applyCam(cam);
+
+  // render loop: camera + slow "Ken Burns" drift + developer/office crossfade
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function render(now) {
+    const t = now / 1000, amp = reduceMotion ? 0 : 1;
+    const zoom = 0.975 - amp * 0.012 * (0.5 + 0.5 * Math.sin(t * 0.21));   // always slightly zoomed in → no edges show
+    const w = cam.w * zoom, h = w * 9 / 16;
+    const cx = cam.cx + amp * cam.w * 0.005 * Math.sin(t * 0.33);
+    const cy = cam.cy + amp * cam.w * 0.004 * Math.cos(t * 0.27);
+    world.setAttribute('viewBox', `${cx - w / 2} ${cy - h / 2} ${w} ${h}`);
+    const o = Math.max(0, Math.min(1, (1.75 * DEV.w - cam.w) / (0.75 * DEV.w)));
+    devLayer.style.opacity = o;
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
+
   let raf = null;
   const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   function flyTo(target, dur = 1700) {
     cancelAnimationFrame(raf);
+    if (dur <= 1) { cam = { ...target }; return; }
     const from = { ...cam }, t0 = performance.now();
     const lw0 = Math.log(from.w), lw1 = Math.log(target.w);
     const step = now => {
@@ -846,11 +617,23 @@
       const w = Math.exp(lw0 + (lw1 - lw0) * e);
       const z = (lw1 === lw0) ? e : (Math.log(w) - lw0) / (lw1 - lw0);
       cam = { cx: from.cx + (target.cx - from.cx) * z, cy: from.cy + (target.cy - from.cy) * z, w };
-      applyCam(cam);
       if (t < 1) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
   }
+
+  /* ---------- dust motes in the office window light ---------- */
+  (() => {
+    const g = document.getElementById('dust');
+    let rnd = 7; const r = () => (rnd = (rnd * 16807) % 2147483647) / 2147483647;
+    let out = '';
+    for (let i = 0; i < 46; i++) {
+      const x = 430 + r() * 760, y = 140 + r() * 520, rad = 1.4 + r() * 2.6;
+      const dur = (9 + r() * 10).toFixed(1), delay = (-r() * 18).toFixed(1);
+      out += `<circle class="mote" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${rad.toFixed(1)}" style="animation-duration:${dur}s;animation-delay:${delay}s"/>`;
+    }
+    g.innerHTML = out;
+  })();
 
   /* ---------- narration overlay ---------- */
   const shade = document.getElementById('shade');

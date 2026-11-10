@@ -3,3 +3,6 @@ check-report.md
 hold.md
 fail.md
 .claude-verdict
+.claude/
+_preview.html
+images/*.png
