@@ -772,6 +772,16 @@
   html.print .page:last-child { break-after: auto; page-break-after: auto; }
   html.print .page > .slide { opacity: 1; }
   @media screen { html.print:not(.shot) body { background: #d9d4dc; } html.print:not(.shot) .page { margin: 24px auto; box-shadow: 0 10px 40px rgba(0, 0, 0, .18); } }
+
+  /* ---- part 2 (platform proposal): slides carried over from the Google Slides layout; 1 in = 120 px ---- */
+  .pf .el { position: absolute; box-sizing: border-box; margin: 0; }
+  .pf h2.pt { font: 800 54px/1.25 var(--pre); letter-spacing: -.035em; word-break: keep-all; }
+  .pf .el > div { word-break: keep-all; }
+  .pf .pcard { background: rgba(255, 255, 255, .86) !important; box-shadow: 0 14px 44px rgba(40, 20, 70, .08), 0 0 0 1px rgba(0, 0, 0, .04); }
+  .pf .pimg { object-fit: contain; }
+  .pf .pfl { position: absolute; left: 0; top: 0; width: 1600px; height: 900px; pointer-events: none; overflow: visible; }
+  .pf .yt { background: #111 center / cover no-repeat; border-radius: 16px; overflow: hidden; box-shadow: 0 18px 48px rgba(30, 20, 60, .18); }
+  .pf .yt iframe { width: 100%; height: 100%; border: 0; display: block; }
 </style>
 </head>
 <body>
@@ -1506,6 +1516,781 @@
       <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
     </section>
 
+
+    <!-- ===================== part 2 · 플랫폼 전환 제안 (28장) ===================== -->
+    <!-- part 2 · 01 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">06 · THE TWO QUESTIONS</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">케이스가 던지는 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">두 가지 질문</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">거대 모델 회사가 들어오는 시장에서, 러버블은 어떻게 살아남을까</span></div></div>
+      <div class="el pcard" style="left:110px;top:290px;width:678px;height:297px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:146px;top:324px;width:758px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">QUESTION 1</span></div></div>
+      <div class="el" style="left:146px;top:356px;width:758px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">러버블의 메인 타겟 고객은 누구여야 하는가</span></div></div>
+      <div class="el" style="left:146px;top:512px;width:231px;height:38px;background:#e3e2ea;border-radius:8px"></div>
+      <div class="el" style="left:160px;top:521px;width:236px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-blue)">전략 선택 · 러버블이 정하는 것</span></div></div>
+      <div class="el" style="left:146px;top:416px;width:606px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">비개발자에게 계속 매끄러운 경험을 줄까, 개발자와 기업이 원하는 확장성 쪽으로 넓힐까</span></div></div>
+      <div class="el pcard" style="left:812px;top:290px;width:678px;height:297px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:848px;top:324px;width:758px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">QUESTION 2</span></div></div>
+      <div class="el" style="left:848px;top:356px;width:758px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">누구나 소프트웨어를 만드는 세상이 정말 올까</span></div></div>
+      <div class="el" style="left:848px;top:512px;width:301px;height:38px;background:#f4e0e1;border-radius:8px"></div>
+      <div class="el" style="left:862px;top:521px;width:310px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">시장 전망 · 러버블이 통제하지 못하는 것</span></div></div>
+      <div class="el" style="left:848px;top:416px;width:606px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">AI가 코딩을 아는 사람을 빠르게 하는 데 그칠까, 아이디어만 있으면 누구나 만드는 시점에 닿을까</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: HBS Case 9-826-220, p.1, p.14</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 02 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">06 · LOGIC</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">질문 2가 질문 1의 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">전제</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">그래서 질문 2에 대한 우리 조의 답을 먼저 정하고, 질문 1을 </span><span style="font-size:21.7px;color:var(--l-sub)">논의했다</span></div></div>
+      <div class="el" style="left:110px;top:440px;width:470px;height:120px;background:var(--l-ink);border:2.0px solid var(--l-ink);border-radius:22px"></div>
+      <div class="el" style="left:285px;top:472px;width:120px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:#ffffff">질문 2</span></div></div>
+      <div class="el" style="left:174px;top:507px;width:342px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:#ffffff">누구나 소프트웨어를 만드는 세상이 올까</span></div></div>
+      <div class="el" style="left:700px;top:330px;width:300px;height:100px;background:#f4e0e1;border:2.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:800px;top:352px;width:101px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">온다</span></div></div>
+      <div class="el" style="left:728px;top:387px;width:244px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-pink)">비개발자 시장이 충분히 큼</span></div></div>
+      <div class="el" style="left:700px;top:570px;width:300px;height:100px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:22px"></div>
+      <div class="el" style="left:787px;top:592px;width:126px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">안 온다</span></div></div>
+      <div class="el" style="left:753px;top:627px;width:193px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">개발자만 더 빨라짐</span></div></div>
+      <div class="el" style="left:1236px;top:291px;width:139px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">질문 1의 답</span></div></div>
+      <div class="el" style="left:1120px;top:330px;width:370px;height:100px;background:#f4e0e1;border:2.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:1202px;top:352px;width:207px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">비개발자에 집중</span></div></div>
+      <div class="el" style="left:1224px;top:387px;width:162px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-pink)">우리 조의 선택</span></div></div>
+      <div class="el" style="left:1120px;top:570px;width:370px;height:100px;border:2.0px solid #888888;border-radius:22px"></div>
+      <div class="el" style="left:1178px;top:592px;width:254px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">개발자·기업으로 확장</span></div></div>
+      <div class="el" style="left:1164px;top:627px;width:282px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:#12112a">모델 회사 · Cursor와 정면 경쟁</span></div></div>
+      <svg class="pfl" viewBox="0 0 1600 900"><defs><marker id="pfa18a8693" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a8693"/></marker></defs><line x1="584.0" y1="480.0" x2="696.0" y2="390.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa18a8693)"/><line x1="584.0" y1="520.0" x2="696.0" y2="610.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa18a8693)"/><line x1="1004.0" y1="380.0" x2="1116.0" y2="380.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa18a8693)"/><line x1="1004.0" y1="620.0" x2="1116.0" y2="620.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa18a8693)"/></svg>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 03 -->
+    <section class="slide pf">
+      <h2 class="el pt" style="left:0px;top:308px;width:1600px;height:212px"><div style="text-align:center;line-height:1.40"><span style="font-size:88.3px;font-weight:800;color:var(--l-ink)">비개발자도 </span><span style="font-size:88.3px;font-weight:800;color:var(--l-pink)">돈을 받는 실제 서비스</span><span style="font-size:88.3px;font-weight:800;color:var(--l-ink)">를</span></div><div style="text-align:center;line-height:1.40"><span style="font-size:88.3px;font-weight:800;color:var(--l-ink)">만드는 세상이 온다</span></div></h2>
+      <div class="el" style="left:-200px;top:556px;width:2000px;height:31px"><div style="text-align:center;line-height:1.40"><span style="font-size:35.8px;color:var(--l-sub)">개인용 작은 앱이 아니라, 수천 명이 돈을 내고 쓰는 서비스</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 04 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">06 · DIAGNOSIS</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">문제는 만들기가 아니라, </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">만든 뒤 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">상용화</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">수천 명이 돈을 내고 쓰려면 앱이 계속 </span><span style="font-size:21.7px;color:var(--l-sub)">돌아가야 한다</span></div></div>
+      <div class="el" style="left:110px;top:310px;width:240px;height:120px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:22px"></div>
+      <div class="el" style="left:170px;top:342px;width:121px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">만들기</span></div></div>
+      <div class="el" style="left:162px;top:377px;width:136px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">화면 · 기능</span></div></div>
+      <div class="el" style="left:395px;top:310px;width:240px;height:120px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:22px"></div>
+      <div class="el" style="left:416px;top:342px;width:198px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">데이터 · 로그인</span></div></div>
+      <div class="el" style="left:438px;top:377px;width:155px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">DB, 회원가입</span></div></div>
+      <div class="el" style="left:680px;top:310px;width:240px;height:120px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:22px"></div>
+      <div class="el" style="left:750px;top:342px;width:100px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">공개</span></div></div>
+      <div class="el" style="left:719px;top:377px;width:162px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">호스팅, 도메인</span></div></div>
+      <div class="el" style="left:965px;top:310px;width:240px;height:120px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:22px"></div>
+      <div class="el" style="left:1022px;top:342px;width:126px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">돈 받기</span></div></div>
+      <div class="el" style="left:1019px;top:377px;width:131px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">결제, 구독</span></div></div>
+      <div class="el" style="left:1250px;top:310px;width:240px;height:120px;background:#f7e1d7;border:2.0px solid var(--l-orange);border-radius:22px"></div>
+      <div class="el" style="left:1297px;top:342px;width:146px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">계속 운영</span></div></div>
+      <div class="el" style="left:1284px;top:377px;width:171px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-orange)">보안, 장애, 수정</span></div></div>
+      <div class="el" style="left:107px;top:459px;width:246px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">Lovable이 이미 잘하는 곳</span></div></div>
+      <div class="el" style="left:1263px;top:459px;width:213px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-orange)">졸업 문제가 생기는 곳</span></div></div>
+      <div class="el" style="left:110px;top:546px;width:1380px;height:75px;background:var(--l-ink);border-radius:16px"></div>
+      <div class="el" style="left:-28px;top:568px;width:1655px;height:30px"><div style="text-align:center;line-height:1.62"><span style="font-size:25.0px;font-weight:700;color:#ffffff">졸업 문제: 실력이 는 사용자는 Cursor로 옮겨 가고, 덜 기술적인 사용자는 한계에서 포기한다</span></div></div>
+      <svg class="pfl" viewBox="0 0 1600 900"><defs><marker id="pfa38a8693" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a8693"/></marker></defs><line x1="356.0" y1="370.0" x2="389.0" y2="370.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa38a8693)"/><line x1="641.0" y1="370.0" x2="674.0" y2="370.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa38a8693)"/><line x1="926.0" y1="370.0" x2="959.0" y2="370.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa38a8693)"/><line x1="1211.0" y1="370.0" x2="1244.0" y2="370.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa38a8693)"/></svg>
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: HBS Case 9-826-220, p.8</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 05 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">06 · FIRST CONDITION</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">1차 생존 조건: 운영까지 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">Lovable 안에서</span></div></h2>
+      <div class="el" style="left:110px;top:238px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:28.3px">운영을 러버블 안으로 묶는 게 중요한 이유</span></div></div>
+      <div class="el pcard" style="left:110px;top:290px;width:327px;height:294px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:138px;top:316px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">WHY 1</span></div></div>
+      <div class="el" style="left:138px;top:348px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">만들기와 운영은 다르다</span></div></div>
+      <div class="el" style="left:138px;top:397px;width:271px;height:174px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">결제, 보안, 사용자 데이터 관리, 장애 대응, 기능 추가 등 앱이 계속 돌아가려면 필요하다.  </span></div><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">이는 비개발자에게 가장 어려운 부분</span></div></div>
+      <div class="el pcard" style="left:461px;top:290px;width:327px;height:294px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:489px;top:316px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">WHY 2</span></div></div>
+      <div class="el" style="left:489px;top:348px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">졸업 문제를 막는다</span></div></div>
+      <div class="el" style="left:489px;top:397px;width:271px;height:81px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">만든 뒤에 막히는 지점을 없애야 사용자가 남는다</span></div></div>
+      <div class="el pcard" style="left:812px;top:290px;width:327px;height:294px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:840px;top:316px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">WHY 3</span></div></div>
+      <div class="el" style="left:840px;top:348px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">전환 비용이 생긴다</span></div></div>
+      <div class="el" style="left:840px;top:397px;width:271px;height:81px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">지금은 코드를 들고 나가기 쉽다. 운영이 </span><span style="font-size:19.2px;color:var(--l-sub)">러버블에 </span><span style="font-size:19.2px;color:var(--l-sub)">묶이면 떠나기 어렵다. Shopify와 같은 구조</span></div></div>
+      <div class="el pcard" style="left:1163px;top:290px;width:327px;height:294px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1191px;top:316px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">WHY 4</span></div></div>
+      <div class="el" style="left:1191px;top:348px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">비전과 맞는다</span></div></div>
+      <div class="el" style="left:1191px;top:397px;width:271px;height:81px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">&quot;비개발자가 돈을 버는 앱&quot;이 비전이라면 돈을 버는 단계까지 책임져야 한다</span></div></div>
+      <div class="el" style="left:110px;top:610px;width:1380px;height:75px;background:var(--l-ink);border-radius:16px"></div>
+      <div class="el" style="left:-28px;top:632px;width:1655px;height:30px"><div style="text-align:center;line-height:1.62"><span style="font-size:25.0px;font-weight:700;color:#ffffff">방법: 직접 만들지 않고 Supabase, Stripe 같은 전문 회사와 깊이 묶는다</span></div></div>
+      <div class="el" style="left:110px;top:696px;width:1380px;height:75px;border-radius:16px"></div>
+      <div class="el" style="left:-28px;top:719px;width:1655px;height:30px"><div style="text-align:center;line-height:1.62"><span style="font-size:25.0px;font-weight:700">이유</span><span style="font-size:25.0px;font-weight:700">: </span><span style="font-size:25.0px;font-weight:700">검증된 인프라로 빠르고 안정적. 러버블의 조직 규모로 감당할 수 있는 방식</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 06 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">06 · NOT ENOUGH</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">하지만 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">운영 연</span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">결 경험</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">만으로는 못 버틴다</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">운영까지 해 주는 서비스는 점점 많아지고, 서로 대체할 수 </span><span style="font-size:21.7px;color:var(--l-sub)">있게 된다</span></div></div>
+      <div class="el" style="left:110px;top:300px;width:300px;height:84px;background:var(--l-ink);border:2.0px solid var(--l-ink);border-radius:18px"></div>
+      <div class="el" style="left:187px;top:328px;width:146px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:#ffffff">Lovable</span></div></div>
+      <div class="el" style="left:110px;top:448px;width:300px;height:84px;background:#f7e1d7;border:2.0px solid var(--l-orange);border-radius:18px"></div>
+      <div class="el" style="left:132px;top:476px;width:257px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">모델 회사의 코딩 도구</span></div></div>
+      <div class="el" style="left:110px;top:596px;width:300px;height:84px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:18px"></div>
+      <div class="el" style="left:168px;top:624px;width:183px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">Replit · Bolt</span></div></div>
+      <div class="el" style="left:550px;top:400px;width:280px;height:180px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:22px"></div>
+      <div class="el" style="left:584px;top:448px;width:212px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">같은 운영 인프라</span></div></div>
+      <div class="el" style="left:588px;top:483px;width:204px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">Supabase · Stripe</span></div></div>
+      <div class="el" style="left:586px;top:511px;width:209px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">누구에게나 열려 있음</span></div></div>
+      <div class="el" style="left:900px;top:321px;width:4px;height:68px;background:var(--l-pink)"></div>
+      <div class="el" style="left:926px;top:322px;width:705px;height:32px"><div style="text-align:left;line-height:1.57"><span style="font-size:25.8px;font-weight:700;color:var(--l-ink)">인프라가 러버블만의 것이 아니다</span></div></div>
+      <div class="el" style="left:926px;top:362px;width:705px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-sub)">데이터는 그대로 두고 만드는 도구만 바꿀 수 있다</span></div></div>
+      <div class="el" style="left:900px;top:411px;width:4px;height:68px;background:var(--l-pink)"></div>
+      <div class="el" style="left:926px;top:412px;width:705px;height:32px"><div style="text-align:left;line-height:1.57"><span style="font-size:25.8px;font-weight:700;color:var(--l-ink)">경쟁자도 이미 풀스택</span></div></div>
+      <div class="el" style="left:926px;top:452px;width:705px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-sub)">Replit, Bolt는 자체 DB와 호스팅을 제공한다</span></div></div>
+      <div class="el" style="left:900px;top:501px;width:4px;height:68px;background:var(--l-pink)"></div>
+      <div class="el" style="left:926px;top:502px;width:705px;height:32px"><div style="text-align:left;line-height:1.57"><span style="font-size:25.8px;font-weight:700;color:var(--l-ink)">모델 회사 도구와 구조가 같다</span></div></div>
+      <div class="el" style="left:926px;top:542px;width:705px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-sub)">차이는 기술이 아니라 &quot;</span><span style="font-size:20.0px;font-weight:700;color:var(--l-pink)">누구를 위해 설계했느냐</span><span style="font-size:20.0px;color:var(--l-sub)">&quot;뿐</span></div></div>
+      <div class="el" style="left:900px;top:591px;width:4px;height:68px;background:var(--l-pink)"></div>
+      <div class="el" style="left:926px;top:592px;width:705px;height:32px"><div style="text-align:left;line-height:1.57"><span style="font-size:25.8px;font-weight:700;color:var(--l-ink)">모델 회사는 연결할 도구가 더 많다</span></div></div>
+      <div class="el" style="left:926px;top:632px;width:705px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-sub)">이 경쟁에서는 러버블이 이길 수 없다</span></div></div>
+      <svg class="pfl" viewBox="0 0 1600 900"><defs><marker id="pfa58a8693" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a8693"/></marker></defs><line x1="414.0" y1="342.0" x2="546.0" y2="460.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa58a8693)"/><line x1="414.0" y1="490.0" x2="546.0" y2="490.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa58a8693)"/><line x1="414.0" y1="638.0" x2="546.0" y2="520.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa58a8693)"/></svg>
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: HBS Case 9-826-220, p.9-10</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 07 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">06 · OPPORTUNITY</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">모델 회사가 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">크기 때문에</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)"> 못 하는 것은?</span></div></h2>
+      <div class="el" style="left:132px;top:265px;width:445px;height:20px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-weight:700;color:#8a8693">후보</span></div></div>
+      <div class="el" style="left:532px;top:265px;width:758px;height:20px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-weight:700;color:#8a8693">모델 회사가 하기 어려운 이유</span></div></div>
+      <div class="el" style="left:1182px;top:265px;width:358px;height:20px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-weight:700;color:#8a8693">러버블만의 차별점이 될 수 있는가?</span></div></div>
+      <div class="el" style="left:110px;top:295px;width:400px;height:60px;background:#fefdfc;border-radius:13px"></div>
+      <div class="el" style="left:132px;top:313px;width:445px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:var(--l-ink)">여러 회사 모델을 골라 쓰기</span></div></div>
+      <div class="el" style="left:510px;top:295px;width:650px;height:60px;background:#fefdfc"></div>
+      <div class="el" style="left:532px;top:313px;width:758px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-sub)">자기 모델을 팔아야 해서 경쟁사 모델을 섞기 어렵다</span></div></div>
+      <div class="el" style="left:1160px;top:295px;width:330px;height:60px;background:#fefdfc"></div>
+      <div class="el" style="left:1182px;top:313px;width:358px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-sub)">기술 우위 · 따라잡힐 수 있음</span></div></div>
+      <div class="el" style="left:110px;top:365px;width:400px;height:60px;background:#fefdfc;border-radius:13px"></div>
+      <div class="el" style="left:132px;top:383px;width:445px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:var(--l-ink)">한 고객층에 대한 집중과 속도</span></div></div>
+      <div class="el" style="left:510px;top:365px;width:650px;height:60px;background:#fefdfc"></div>
+      <div class="el" style="left:532px;top:383px;width:758px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-sub)">개발자, 기업, 소비자를 모두 상대해야 한다</span></div></div>
+      <div class="el" style="left:1160px;top:365px;width:330px;height:60px;background:#fefdfc"></div>
+      <div class="el" style="left:1182px;top:383px;width:358px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-sub)">기술 우위 · 따라잡힐 수 있음</span></div></div>
+      <div class="el" style="left:110px;top:435px;width:400px;height:60px;background:#fefdfc;border-radius:13px"></div>
+      <div class="el" style="left:132px;top:453px;width:445px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:var(--l-pink)">비개발자가 막히는 지점의 데이터</span></div></div>
+      <div class="el" style="left:510px;top:435px;width:650px;height:60px;background:#fefdfc"></div>
+      <div class="el" style="left:532px;top:453px;width:758px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-sub)">모델 회사의 데이터는 범용이다</span></div></div>
+      <div class="el" style="left:1160px;top:435px;width:330px;height:60px;background:#fefdfc"></div>
+      <div class="el" style="left:1182px;top:453px;width:358px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-sub)">기술 우위 · 따라잡힐 수 있음</span></div></div>
+      <div class="el" style="left:110px;top:505px;width:400px;height:65px;background:#ffffff;border:2.0px solid var(--l-pink);border-radius:14px"></div>
+      <div class="el" style="left:132px;top:526px;width:445px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:var(--l-ink)">비개발자 창작자 커뮤니티</span></div></div>
+      <div class="el" style="left:510px;top:505px;width:650px;height:65px;background:#ffffff;border:2.0px solid var(--l-pink)"></div>
+      <div class="el" style="left:532px;top:526px;width:758px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-ink)">사용자 범위가 넓어 &quot;우리끼리&quot;라는 소속감이 생기기 어렵다</span></div></div>
+      <div class="el" style="left:1160px;top:505px;width:330px;height:65px;background:#ffffff;border:2.0px solid var(--l-pink)"></div>
+      <div class="el" style="left:1182px;top:521px;width:205px;height:33px;background:#f4e0e1;border-radius:7px"></div>
+      <div class="el" style="left:1196px;top:528px;width:221px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">러버블만의 차별적 가치</span></div></div>
+      <div class="el" style="left:110px;top:580px;width:400px;height:65px;background:#ffffff;border:2.0px solid var(--l-pink);border-radius:14px"></div>
+      <div class="el" style="left:132px;top:601px;width:445px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:var(--l-ink)">창작자와 비개발자를 잇는 시장</span></div></div>
+      <div class="el" style="left:510px;top:580px;width:650px;height:65px;background:#ffffff;border:2.0px solid var(--l-pink)"></div>
+      <div class="el" style="left:532px;top:601px;width:758px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-ink)">도구를 파는 쪽이지, 시장을 운영하는 쪽이 아니다</span></div></div>
+      <div class="el" style="left:1160px;top:580px;width:330px;height:65px;background:#ffffff;border:2.0px solid var(--l-pink)"></div>
+      <div class="el" style="left:1182px;top:596px;width:205px;height:33px;background:#f4e0e1;border-radius:7px"></div>
+      <div class="el" style="left:1196px;top:603px;width:221px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">러버블이 새롭게 만들 가치</span></div></div>
+      <div class="el" style="left:110px;top:687px;width:1380px;height:75px;background:var(--l-ink);border-radius:16px"></div>
+      <div class="el" style="left:-28px;top:710px;width:1655px;height:30px"><div style="text-align:center;line-height:1.62"><span style="font-size:25.0px;font-weight:700;color:#ffffff">기술은 빌리고, </span><span style="font-size:25.0px;font-weight:700;color:var(--l-pink)">사람이 모여서 생기는 가치</span><span style="font-size:25.0px;font-weight:700;color:#ffffff">는 직접 가진다</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 08 -->
+    <section class="slide pf t-focus dark">
+      <h2 class="el pt" style="left:-200px;top:362px;width:2000px;height:105px"><div style="text-align:center;line-height:1.40"><span style="font-size:88.3px;font-weight:800;color:#ffffff">툴에서, </span><span style="font-size:88.3px;font-weight:800;color:#ff7aa8">양면 플랫폼</span><span style="font-size:88.3px;font-weight:800;color:#ffffff">으로</span></div></h2>
+      <div class="el" style="left:-209px;top:291px;width:2000px;height:31px"><div style="text-align:center;line-height:1.62"><span style="font-size:30.8px;font-weight:700;color:#b8b8bf">비즈니스 전략 </span><span style="font-size:30.8px;font-weight:700;color:#b8b8bf">제안 · 비개발자와 창작자가 양쪽에서 거래하는 생태계</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 09 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · PLATFORM STRUCTURE</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">Lovable은 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">기반</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">을 만들고, 가치는 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">사용자끼리</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)"> 순환한다</span></div></h2>
+      <div class="el" style="left:270px;top:269px;width:142px;height:22px"><div style="text-align:left;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">사이드 전환</span></div></div>
+      <div class="el" style="left:270px;top:295px;width:189px;height:22px"><div style="text-align:left;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">사용자가 판매자로</span></div></div>
+      <div class="el" style="left:110px;top:346px;width:280px;height:200px;background:#e3e2ea;border:2.0px solid var(--l-blue);border-radius:22px"></div>
+      <div class="el" style="left:143px;top:404px;width:214px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">템플릿·앱 창작자</span></div></div>
+      <div class="el" style="left:189px;top:439px;width:122px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-blue)">피보조자</span></div></div>
+      <div class="el" style="left:179px;top:467px;width:142px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-blue)">낮은 수수료</span></div></div>
+      <div class="el" style="left:550px;top:236px;width:400px;height:420px;background:#fefefd;border:3.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:673px;top:256px;width:153px;height:32px"><div style="text-align:center;line-height:1.45"><span style="font-size:25.8px;font-weight:700;color:var(--l-ink)">Lovable</span></div></div>
+      <div class="el" style="left:575px;top:306px;width:350px;height:96px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:21px"></div>
+      <div class="el" style="left:680px;top:326px;width:141px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">네트워크</span></div></div>
+      <div class="el" style="left:667px;top:361px;width:167px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">커뮤니티 · 마켓</span></div></div>
+      <div class="el" style="left:575px;top:418px;width:350px;height:96px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:21px"></div>
+      <div class="el" style="left:700px;top:438px;width:100px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">도구</span></div></div>
+      <div class="el" style="left:664px;top:473px;width:171px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">엔진 · 운영 연결</span></div></div>
+      <div class="el" style="left:575px;top:530px;width:350px;height:96px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:21px"></div>
+      <div class="el" style="left:690px;top:550px;width:121px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">데이터</span></div></div>
+      <div class="el" style="left:653px;top:585px;width:193px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">불편 데이터로 매칭</span></div></div>
+      <div class="el" style="left:1110px;top:236px;width:380px;height:420px;border:2.0px dashed #b9b2c6;border-radius:22px"></div>
+      <div class="el" style="left:1197px;top:253px;width:207px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">비개발자 사이드</span></div></div>
+      <div class="el" style="left:1135px;top:296px;width:330px;height:160px;background:#f4e0e1;border:2.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:1196px;top:334px;width:208px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">창업자·소상공인</span></div></div>
+      <div class="el" style="left:1207px;top:369px;width:187px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-pink)">지불자 · 높은 가격</span></div></div>
+      <div class="el" style="left:1221px;top:397px;width:158px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-pink)">크레딧 + 구매</span></div></div>
+      <div class="el" style="left:1135px;top:476px;width:330px;height:160px;background:#f4e0e1;border:2.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:1226px;top:513px;width:148px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">취미·개인</span></div></div>
+      <div class="el" style="left:1237px;top:549px;width:127px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-pink)">낮은 가격</span></div></div>
+      <div class="el" style="left:1213px;top:577px;width:173px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-pink)">커뮤니티를 채움</span></div></div>
+      <div class="el" style="left:417px;top:375px;width:107px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">템플릿</span></div></div>
+      <div class="el" style="left:424px;top:497px;width:91px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">수익</span></div></div>
+      <div class="el" style="left:977px;top:375px;width:107px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">템플릿</span></div></div>
+      <div class="el" style="left:984px;top:497px;width:91px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">대금</span></div></div>
+      <div class="el" style="left:550px;top:690px;width:400px;height:96px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:21px"></div>
+      <div class="el" style="left:690px;top:709px;width:121px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">파트너</span></div></div>
+      <div class="el" style="left:608px;top:745px;width:284px;height:21px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">Supabase · Stripe · 모델 회사</span></div></div>
+      <div class="el" style="left:1110px;top:690px;width:380px;height:94px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:21px"></div>
+      <div class="el" style="left:1240px;top:708px;width:121px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">광고주</span></div></div>
+      <div class="el" style="left:1211px;top:743px;width:178px;height:21px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">성숙 단계에 추가</span></div></div>
+      <svg class="pfl" viewBox="0 0 1600 900"><defs><marker id="pfa88a8693" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a8693"/></marker></defs><line x1="1300.0" y1="232.0" x2="1300.0" y2="210.0" stroke="#8a8693" stroke-width="2.5" stroke-dasharray="7 6" style="color:#8a8693"/><line x1="1300.0" y1="210.0" x2="250.0" y2="210.0" stroke="#8a8693" stroke-width="2.5" stroke-dasharray="7 6" style="color:#8a8693"/><line x1="250.0" y1="210.0" x2="250.0" y2="342.0" stroke="#8a8693" stroke-width="2.5" stroke-dasharray="7 6" style="color:#8a8693" marker-end="url(#pfa88a8693)"/><line x1="396.0" y1="411.0" x2="544.0" y2="411.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa88a8693)"/><line x1="544.0" y1="481.0" x2="396.0" y2="481.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa88a8693)"/><line x1="956.0" y1="411.0" x2="1104.0" y2="411.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa88a8693)"/><line x1="1104.0" y1="481.0" x2="956.0" y2="481.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa88a8693)"/><line x1="750.0" y1="686.0" x2="750.0" y2="662.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa88a8693)"/><line x1="1300.0" y1="686.0" x2="1300.0" y2="662.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa88a8693)"/></svg>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 10 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · PROPOSAL</span></div></div>
+      <h2 class="el pt" style="left:110px;top:115px;width:836px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">메인 타겟은 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">앱으로 돈을 버는 사람들</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:759px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">비개발자(특히 창업자·소상공인)와 창작 경제 참여자가 양쪽 사이드에서 </span><span style="font-size:21.7px;color:var(--l-sub)">거래한다</span></div></div>
+      <div class="el" style="left:110px;top:384px;width:420px;height:276px;background:#fefdfc;border:2.0px solid var(--l-blue);border-radius:22px"></div>
+      <div class="el" style="left:137px;top:408px;width:465px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-blue)">SUPPLY SIDE</span></div></div>
+      <div class="el" style="left:137px;top:440px;width:465px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">창작 경제 참여자</span></div></div>
+      <div class="el" style="left:137px;top:578px;width:186px;height:33px;background:#e3e2ea;border-radius:7px"></div>
+      <div class="el" style="left:150px;top:586px;width:197px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-blue)">보조받는 쪽 · 낮은 수수료</span></div></div>
+      <div class="el" style="left:137px;top:494px;width:372px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">템플릿과 앱을 만들어 파는 사람</span></div><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">비개발자가 쓸 재료를 공급</span></div></div>
+      <div class="el" style="left:948px;top:264px;width:542px;height:240px;background:#fefdfc;border:2.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:974px;top:288px;width:465px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">DEMAND SIDE · MAIN</span></div></div>
+      <div class="el" style="left:974px;top:320px;width:465px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">창업자 · 소상공인</span></div></div>
+      <div class="el" style="left:974px;top:460px;width:175px;height:33px;background:#f4e0e1;border-radius:7px"></div>
+      <div class="el" style="left:988px;top:467px;width:184px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">돈을 내는 쪽 · 높은 가격</span></div></div>
+      <div class="el" style="left:974px;top:374px;width:492px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">개발자를 고용하는 대신 직접 만드는 사람</span></div><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">템플릿을 사서 서비스를 만들고 운영</span></div></div>
+      <div class="el" style="left:948px;top:534px;width:542px;height:240px;background:#fefdfc;border:2.0px solid var(--l-orange);border-radius:22px"></div>
+      <div class="el" style="left:974px;top:558px;width:465px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-orange)">DEMAND SIDE · BASE</span></div></div>
+      <div class="el" style="left:974px;top:590px;width:465px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">취미 · 개인</span></div></div>
+      <div class="el" style="left:974px;top:730px;width:87px;height:33px;background:#f7e1d7;border-radius:7px"></div>
+      <div class="el" style="left:988px;top:737px;width:83px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-orange)">낮은 가격</span></div></div>
+      <div class="el" style="left:974px;top:644px;width:492px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">자기가 쓸 앱을 만드는 사람</span></div><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">커뮤니티를 채우고, 미래의 창업자와 창작자가 됨</span></div></div>
+      <div class="el" style="left:624px;top:476px;width:234px;height:91px;background:var(--l-ink);border-radius:20px"></div>
+      <div class="el" style="left:624px;top:504px;width:234px;height:33px"><div style="text-align:center;line-height:1.45"><span style="font-size:28.3px;font-weight:700;color:#ffffff">Lovable</span></div></div>
+      <svg class="pfl" viewBox="0 0 1600 900"><defs><marker id="pfa98a8693" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a8693"/></marker></defs><line x1="540.0" y1="522.0" x2="614.4" y2="522.1" stroke="#8a8693" stroke-width="2.9" style="color:#8a8693" marker-end="url(#pfa98a8693)"/><line x1="870.0" y1="504.0" x2="936.0" y2="396.0" stroke="#8a8693" stroke-width="2.9" style="color:#8a8693" marker-end="url(#pfa98a8693)"/><line x1="870.0" y1="540.0" x2="936.0" y2="654.0" stroke="#8a8693" stroke-width="2.9" style="color:#8a8693" marker-end="url(#pfa98a8693)"/></svg>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 11 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · PROPOSAL</span></div></div>
+      <h2 class="el pt" style="left:110px;top:115px;width:1181px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">플랫폼 예시:</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)"> </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">능력을 교환하는 ‘숨고’</span></div></h2>
+      <img class="el pimg" src="images/p2/h73ef4657854202bb_1_32.jpg" alt="" style="left:110px;top:264px;width:538px;height:468px">
+      <div class="el pcard" style="left:684px;top:264px;width:806px;height:144px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:708px;top:278px;width:758px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">01 · 양면 시장</span></div></div>
+      <div class="el" style="left:708px;top:310px;width:758px;height:38px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">고수와 의뢰인이 만난다</span></div></div>
+      <div class="el" style="left:708px;top:353px;width:758px;height:42px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">능력을 가진 고수(공급)와 일을 맡기려는 의뢰인(수요)이 한곳에서 거래한다</span></div></div>
+      <div class="el pcard" style="left:684px;top:426px;width:806px;height:144px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:708px;top:440px;width:758px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">02 · 신뢰 장치</span></div></div>
+      <div class="el" style="left:708px;top:472px;width:758px;height:38px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">리뷰와 평점이 품질을 보증한다</span></div></div>
+      <div class="el" style="left:708px;top:515px;width:758px;height:42px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">모르는 사람끼리 거래해도 믿을 수 있게 플랫폼이 평가를 쌓는다</span></div></div>
+      <div class="el pcard" style="left:684px;top:588px;width:806px;height:144px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:708px;top:602px;width:758px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">03 · 러버블에 옮기면</span></div></div>
+      <div class="el" style="left:708px;top:634px;width:758px;height:38px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">고수 자리에 창작자가 온다</span></div></div>
+      <div class="el" style="left:708px;top:677px;width:758px;height:42px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">창작자의 템플릿·앱을 비개발자가 사고, 러버블은 거래와 품질을 관리한다</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: 숨고 화면</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 12 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · WHY NOT ENTERPRISE</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">(참고) 기업</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)"> 고객은 메인이 아니라 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">&quot;있으면 좋은 것&quot;</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">비중이 작지 않아 배제하지는 않지만, 자원을 먼저 </span><span style="font-size:21.7px;color:var(--l-sub)">쓰지는 않는다</span></div></div>
+      <div class="el pcard" style="left:110px;top:290px;width:327px;height:270px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:138px;top:316px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">REASON 1</span></div></div>
+      <div class="el" style="left:138px;top:348px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">경쟁 우위가 없다</span></div></div>
+      <div class="el" style="left:138px;top:397px;width:271px;height:81px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">Cursor는 포춘 500 개발자의 50% 이상이 사용. Microsoft, Google은 이미 기업 안에 있다</span></div></div>
+      <div class="el pcard" style="left:461px;top:290px;width:327px;height:270px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:489px;top:316px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">REASON 2</span></div></div>
+      <div class="el" style="left:489px;top:348px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">미션과 거리가 있다</span></div></div>
+      <div class="el" style="left:489px;top:397px;width:271px;height:52px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">기업이 원하는 것은 빠른 제작이 아니라 통제와 안전</span></div></div>
+      <div class="el pcard" style="left:812px;top:290px;width:327px;height:270px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:840px;top:316px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">REASON 3</span></div></div>
+      <div class="el" style="left:840px;top:348px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">조직이 감당하기 어렵다</span></div></div>
+      <div class="el" style="left:840px;top:397px;width:271px;height:52px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">권한 관리, 감사 기록, 전용 클라우드, SLA가 아직 없다</span></div></div>
+      <div class="el pcard" style="left:1163px;top:290px;width:327px;height:270px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1191px;top:316px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">REASON 4</span></div></div>
+      <div class="el" style="left:1191px;top:348px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">이도 저도 아니게 된다</span></div></div>
+      <div class="el" style="left:1191px;top:397px;width:271px;height:52px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">기업 계약에 끌려가면 소비자를 잊고, 결국 둘 다 놓친다</span></div></div>
+      <div class="el" style="left:110px;top:586px;width:1380px;height:75px;background:var(--l-ink);border-radius:16px"></div>
+      <div class="el" style="left:-28px;top:608px;width:1655px;height:30px"><div style="text-align:center;line-height:1.62"><span style="font-size:25.0px;font-weight:700;color:#ffffff">직원이 집에서 쓰다 회사로 가져오는 흐름(B2C2B)은 그대로 받는다</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: HBS Case 9-826-220, p.9, p.12-13</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 13 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · CORE INTERACTION</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">참여자 + 가치단위 + 필터 = </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">핵심 상호작용 </span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">플랫폼 설계는 이 한 가지 상호작용을 정하는 데에서 시작</span></div></div>
+      <div class="el" style="left:110px;top:300px;width:300px;height:110px;background:#e3e2ea;border:2.0px solid var(--l-blue);border-radius:22px"></div>
+      <div class="el" style="left:200px;top:326px;width:121px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">창작자</span></div></div>
+      <div class="el" style="left:207px;top:362px;width:107px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-blue)">참여자</span></div></div>
+      <div class="el" style="left:470px;top:270px;width:300px;height:152px;background:#fefefd;border:2.0px solid var(--l-orange);border-radius:22px"></div>
+      <div class="el" style="left:513px;top:303px;width:215px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">템플릿·앱·노하우</span></div></div>
+      <div class="el" style="left:559px;top:380px;width:122px;height:21px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">가치단위</span></div></div>
+      <div class="el" style="left:830px;top:300px;width:300px;height:110px;background:#fefefd;border:3.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:907px;top:326px;width:146px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">맞춤 추천</span></div></div>
+      <div class="el" style="left:881px;top:362px;width:198px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">필터: 데이터로 고름</span></div></div>
+      <div class="el" style="left:1190px;top:300px;width:300px;height:110px;background:#f4e0e1;border:2.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:1270px;top:326px;width:141px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">비개발자</span></div></div>
+      <div class="el" style="left:1287px;top:362px;width:107px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-pink)">참여자</span></div></div>
+      <div class="el pcard" style="left:110px;top:522px;width:444px;height:246px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:138px;top:548px;width:485px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">PULL</span></div></div>
+      <div class="el" style="left:138px;top:581px;width:485px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">양쪽 참여자 </span><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">끌어오기</span></div></div>
+      <div class="el" style="left:138px;top:629px;width:388px;height:52px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">브랜</span><span style="font-size:19.2px;color:var(--l-sub)">딩</span><span style="font-size:19.2px;color:var(--l-sub)">, 커뮤니티, 공개된 성공 사례, Made by Lovable 뱃지</span></div></div>
+      <div class="el pcard" style="left:578px;top:522px;width:444px;height:246px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:606px;top:548px;width:485px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">FACILITATE</span></div></div>
+      <div class="el" style="left:606px;top:581px;width:485px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">앱 만들기 도구와 거래 규칙으로 </span></div><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">촉진하기</span></div></div>
+      <div class="el" style="left:606px;top:669px;width:388px;height:52px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">만들기 엔진, 운영 연결, 템플릿 한 번에 적용, 거래 규칙</span></div></div>
+      <div class="el pcard" style="left:1046px;top:522px;width:444px;height:246px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1074px;top:548px;width:485px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">MATCH</span></div></div>
+      <div class="el" style="left:1074px;top:581px;width:485px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">데이터로 </span><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">매칭하기</span></div></div>
+      <div class="el" style="left:1074px;top:629px;width:388px;height:52px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">‘</span><span style="font-size:19.2px;color:var(--l-sub)">이런 서비스에는 이 기능 템플릿</span><span style="font-size:19.2px;color:var(--l-sub)">’</span><span style="font-size:19.2px;color:var(--l-sub)">을 맞춤으로 빠르게 안내</span></div></div>
+      <div class="el" style="left:484px;top:338px;width:272px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">커뮤니티의 질문, 답변</span></div></div>
+      <div class="el" style="left:128px;top:479px;width:485px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">3대 기능: 끌어오고, 촉진하고, 매칭한다</span></div></div>
+      <svg class="pfl" viewBox="0 0 1600 900"><defs><marker id="pfa128a8693" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a8693"/></marker></defs><line x1="416.0" y1="355.0" x2="464.0" y2="355.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa128a8693)"/><line x1="776.0" y1="355.0" x2="824.0" y2="355.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa128a8693)"/><line x1="1136.0" y1="355.0" x2="1184.0" y2="355.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa128a8693)"/></svg>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 14 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:800px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · NETWORK EFFECTS</span></div></div>
+      <h2 class="el pt" style="left:110px;top:118px;width:640px;height:145px"><div style="text-align:left;line-height:1.40"><span style="font-size:60.0px;font-weight:800;color:var(--l-ink)">한쪽이 늘면,</span></div><div style="text-align:left;line-height:1.40"><span style="font-size:60.0px;font-weight:800;color:var(--l-pink)">반대쪽도 늘어난다</span></div></h2>
+      <div class="el" style="left:110px;top:286px;width:800px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">모델 회사가 기술로 복제할 수 없는 가치</span></div></div>
+      <div class="el" style="left:110px;top:369px;width:48px;height:48px;background:var(--l-pink);border-radius:50%"></div>
+      <div class="el" style="left:113px;top:382px;width:72px;height:23px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-family:var(--mono);font-weight:700;color:#ffffff">01</span></div></div>
+      <div class="el" style="left:182px;top:377px;width:710px;height:32px"><div style="text-align:left;line-height:1.62"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">창작자가 모인다</span></div></div>
+      <div class="el" style="left:182px;top:422px;width:710px;height:23px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">템플릿을 팔면 수입이 생기는 것을 보고 들어옴</span></div></div>
+      <div class="el" style="left:110px;top:474px;width:48px;height:48px;background:var(--l-pink);border-radius:50%"></div>
+      <div class="el" style="left:110px;top:486px;width:72px;height:23px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-family:var(--mono);font-weight:700;color:#ffffff">02</span></div></div>
+      <div class="el" style="left:182px;top:482px;width:710px;height:32px"><div style="text-align:left;line-height:1.62"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">템플릿이 늘어난다</span></div></div>
+      <div class="el" style="left:182px;top:527px;width:710px;height:23px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">종류가 많아지고 품질이 올라감</span></div></div>
+      <div class="el" style="left:110px;top:578px;width:48px;height:48px;background:var(--l-pink);border-radius:50%"></div>
+      <div class="el" style="left:110px;top:591px;width:72px;height:23px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-family:var(--mono);font-weight:700;color:#ffffff">03</span></div></div>
+      <div class="el" style="left:182px;top:586px;width:710px;height:32px"><div style="text-align:left;line-height:1.62"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">비개발자가 모인다</span></div></div>
+      <div class="el" style="left:182px;top:631px;width:710px;height:23px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">쓸 재료가 많아서 서비스를 더 쉽게 완성</span></div></div>
+      <div class="el" style="left:110px;top:683px;width:48px;height:48px;background:var(--l-pink);border-radius:50%"></div>
+      <div class="el" style="left:110px;top:695px;width:72px;height:23px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-family:var(--mono);font-weight:700;color:#ffffff">04</span></div></div>
+      <div class="el" style="left:182px;top:691px;width:710px;height:32px"><div style="text-align:left;line-height:1.62"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">거래가 늘어난다</span></div></div>
+      <div class="el" style="left:182px;top:736px;width:710px;height:23px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">창작자 수입이 늘어 다시 창작자를 끌어옴</span></div></div>
+      <div class="el" style="left:880px;top:140px;width:600px;height:600px;background:#faf7f5;border-radius:50%"></div>
+      <div class="el" style="left:960px;top:220px;width:440px;height:440px;border:5.0px dashed var(--l-pink);border-radius:50%"></div>
+      <div class="el" style="left:1065px;top:379px;width:229px;height:55px"><div style="text-align:center;line-height:1.40"><span style="font-size:37.5px;font-weight:700;color:var(--l-pink)">교차</span></div><div style="text-align:center;line-height:1.40"><span style="font-size:37.5px;font-weight:700;color:var(--l-pink)">네트워크</span><span style="font-size:37.5px;font-weight:700;color:var(--l-pink)"> 효과</span></div></div>
+      <div class="el" style="left:1087px;top:483px;width:186px;height:21px"><div style="text-align:center;line-height:1.45"><span style="font-size:15.8px;font-family:var(--mono);color:#8a8693">CROSS-SIDE</span></div></div>
+      <div class="el" style="left:1099px;top:139px;width:161px;height:161px;background:var(--l-pink);border-radius:50%"></div>
+      <div class="el" style="left:1140px;top:194px;width:80px;height:22px"><div style="text-align:center;line-height:1.44"><span style="font-size:15.0px;font-family:var(--mono);color:#ffffff">01</span></div></div>
+      <div class="el" style="left:1115px;top:219px;width:130px;height:32px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:#ffffff">창작자</span></div></div>
+      <div class="el" style="left:1319px;top:359px;width:161px;height:161px;background:var(--l-pink);border-radius:50%"></div>
+      <div class="el" style="left:1360px;top:414px;width:80px;height:22px"><div style="text-align:center;line-height:1.44"><span style="font-size:15.0px;font-family:var(--mono);color:#ffffff">02</span></div></div>
+      <div class="el" style="left:1335px;top:439px;width:130px;height:32px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:#ffffff">템플릿</span></div></div>
+      <div class="el" style="left:1099px;top:579px;width:161px;height:161px;background:var(--l-pink);border-radius:50%"></div>
+      <div class="el" style="left:1140px;top:634px;width:80px;height:22px"><div style="text-align:center;line-height:1.44"><span style="font-size:15.0px;font-family:var(--mono);color:#ffffff">03</span></div></div>
+      <div class="el" style="left:1104px;top:659px;width:153px;height:32px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:#ffffff">비개발자</span></div></div>
+      <div class="el" style="left:879px;top:359px;width:161px;height:161px;background:var(--l-pink);border-radius:50%"></div>
+      <div class="el" style="left:920px;top:414px;width:80px;height:22px"><div style="text-align:center;line-height:1.44"><span style="font-size:15.0px;font-family:var(--mono);color:#ffffff">04</span></div></div>
+      <div class="el" style="left:907px;top:439px;width:107px;height:32px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:#ffffff">거래</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 15 -->
+    <section class="slide pf">
+      <h2 class="el pt" style="left:110px;top:114px;width:960px;height:72px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">네트워크 효과의 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">선순환</span></div></h2>
+      <div class="el pk" style="left:110px;top:60px;width:394px;height:394px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · NETWORK EFFECTS</span></div></div>
+      <div class="el pcard" style="left:110px;top:264px;width:328px;height:348px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:127px;top:288px;width:294px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">01 · CROSS-SIDE</span></div></div>
+      <div class="el" style="left:127px;top:322px;width:294px;height:46px"><div style="text-align:left;line-height:1.20"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">교차 네트워크 효과</span></div></div>
+      <div class="el" style="left:127px;top:378px;width:294px;height:138px"><div style="text-align:left;line-height:1.20"><span style="font-size:19.2px;color:var(--l-sub)">창작자가 늘면 템플릿이 늘어 비개발자가 오고, 비개발자가 늘면 창작자 수입이 는다</span></div></div>
+      <div class="el" style="left:137px;top:540px;width:275px;height:43px;background:#fcecf2;border-radius:10px;display:flex;flex-direction:column;justify-content:center;padding:0 12px"><div style="text-align:center;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">수업: 간접(교차) 네트워크 효과</span></div></div>
+      <div class="el pcard" style="left:461px;top:264px;width:328px;height:348px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:478px;top:288px;width:294px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">02 · SAME-SIDE</span></div></div>
+      <div class="el" style="left:478px;top:322px;width:294px;height:46px"><div style="text-align:left;line-height:1.20"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">같은 쪽 네트워크 효과</span></div></div>
+      <div class="el" style="left:478px;top:378px;width:294px;height:138px"><div style="text-align:left;line-height:1.20"><span style="font-size:19.2px;color:var(--l-sub)">비개발자끼리 커뮤니티에서 돕고 배운다. 취미·개인 사용자가 이 층을 두껍게 한다</span></div></div>
+      <div class="el" style="left:487px;top:540px;width:275px;height:43px;background:#fcecf2;border-radius:10px;display:flex;flex-direction:column;justify-content:center;padding:0 12px"><div style="text-align:center;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">수업: 직접 네트워크 효과</span></div></div>
+      <div class="el pcard" style="left:812px;top:264px;width:328px;height:348px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:829px;top:288px;width:294px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">03 · DATA</span></div></div>
+      <div class="el" style="left:829px;top:322px;width:294px;height:46px"><div style="text-align:left;line-height:1.20"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">데이터</span></div></div>
+      <div class="el" style="left:829px;top:378px;width:294px;height:138px"><div style="text-align:left;line-height:1.20"><span style="font-size:19.2px;color:var(--l-sub)">불편함이 글로 쌓일수록 추천과 엔진이 좋아진다</span></div></div>
+      <div class="el" style="left:839px;top:540px;width:275px;height:43px;background:#fcecf2;border-radius:10px;display:flex;flex-direction:column;justify-content:center;padding:0 12px"><div style="text-align:center;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">수업: 데이터 층, 피드백 고리</span></div></div>
+      <div class="el pcard" style="left:1163px;top:264px;width:328px;height:348px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1180px;top:288px;width:294px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">04 · SIDE SWITCHING</span></div></div>
+      <div class="el" style="left:1180px;top:322px;width:294px;height:46px"><div style="text-align:left;line-height:1.20"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">사이드 전환</span></div></div>
+      <div class="el" style="left:1180px;top:378px;width:294px;height:138px"><div style="text-align:left;line-height:1.20"><span style="font-size:19.2px;color:var(--l-sub)">졸업한 창업자가 자기 서비스의 기능을 템플릿으로 판다</span></div></div>
+      <div class="el" style="left:1189px;top:540px;width:275px;height:43px;background:#fcecf2;border-radius:10px;display:flex;flex-direction:column;justify-content:center;padding:0 12px"><div style="text-align:center;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">수업: 사이드 전환</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: 수업 자료 6·8주차 · Blind 화면</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 16 -->
+    <section class="slide pf">
+      <h2 class="el pt" style="left:110px;top:114px;width:1193px;height:72px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">커뮤니티로 ‘</span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">네트워크 효과</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">&#x27;를 만들 수 있는가?</span></div></h2>
+      <img class="el pimg" src="images/p2/h73ef4657854202bb_1_39.jpg" alt="" style="left:110px;top:294px;width:535px;height:360px">
+      <img class="el pimg" src="images/p2/h73ef4657854202bb_1_40.jpg" alt="" style="left:663px;top:294px;width:296px;height:360px">
+      <div class="el pk" style="left:110px;top:74px;width:394px;height:24px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · NETWORK EFFECTS</span></div></div>
+      <div class="el" style="left:1170px;top:114px;width:176px;height:72px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:700;color:var(--l-blue)">YES!</span></div></div>
+      <div class="el pcard" style="left:1016px;top:315px;width:495px;height:142px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1040px;top:330px;width:447px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">01 · 같은 쪽 네트워크 효과</span></div></div>
+      <div class="el" style="left:1040px;top:361px;width:447px;height:38px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">사람이 글을 부른다</span></div></div>
+      <div class="el" style="left:1040px;top:404px;width:447px;height:40px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">사람이 모일수록 글이 늘고, 글이 늘수록 사람이 모인다</span></div></div>
+      <div class="el pcard" style="left:1016px;top:471px;width:495px;height:142px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1040px;top:486px;width:447px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">02 · 러버블에 옮기면</span></div></div>
+      <div class="el" style="left:1040px;top:517px;width:447px;height:38px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">비개발자 창업자 커뮤니티</span></div></div>
+      <div class="el" style="left:1040px;top:560px;width:447px;height:40px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">만들다 막힌 경험과 해결책이 쌓이는 곳이 된다</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: 수업 자료 6·8주차 · Blind 화면</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 17 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · PRICING</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">가격: </span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">누구를 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-blue)">보조</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">하고, 누구에게 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">받을</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)"> 것인가</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:585px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">Xbox와 같은 쪽(개발자를 보조), 앱스토어와는 반대쪽</span></div></div>
+      <div class="el" style="left:110px;top:270px;width:360px;height:234px;background:#fefdfc;border:2.0px solid var(--l-blue);border-radius:22px"></div>
+      <div class="el" style="left:137px;top:295px;width:302px;height:12px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-blue)">SUBSIDY SIDE</span></div></div>
+      <div class="el" style="left:137px;top:328px;width:270px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">창작자</span></div></div>
+      <div class="el" style="left:137px;top:373px;width:101px;height:33px;background:#e3e2ea;border-radius:7px"></div>
+      <div class="el" style="left:150px;top:380px;width:97px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-blue)">낮은 수수료</span></div></div>
+      <div class="el" style="left:137px;top:421px;width:312px;height:19px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">좋은 템플릿이 많아야 비개발자가 온다</span></div></div>
+      <div class="el" style="left:806px;top:270px;width:330px;height:234px;background:#fefdfc;border:2.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:833px;top:295px;width:485px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">MONEY SIDE</span></div></div>
+      <div class="el" style="left:833px;top:328px;width:485px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">창업자 · 소상공인</span></div></div>
+      <div class="el" style="left:833px;top:373px;width:87px;height:33px;background:#f4e0e1;border-radius:7px"></div>
+      <div class="el" style="left:846px;top:380px;width:83px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">높은 가격</span></div></div>
+      <div class="el" style="left:833px;top:421px;width:282px;height:23px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">개발자 고용을 대신하므로 낼 의사가 높다</span></div></div>
+      <div class="el" style="left:1152px;top:270px;width:324px;height:234px;background:#fefdfc;border:2.0px solid var(--l-orange);border-radius:22px"></div>
+      <div class="el" style="left:1178px;top:295px;width:485px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-orange)">BASE</span></div></div>
+      <div class="el" style="left:1178px;top:328px;width:485px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">취미 · 개인</span></div></div>
+      <div class="el" style="left:1178px;top:373px;width:87px;height:33px;background:#f7e1d7;border-radius:7px"></div>
+      <div class="el" style="left:1192px;top:380px;width:83px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-orange)">낮은 가격</span></div></div>
+      <div class="el" style="left:1178px;top:421px;width:276px;height:23px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">가격에 민감. 커뮤니티를 채운다</span></div></div>
+      <div class="el" style="left:110px;top:556px;width:472px;height:25px"><div style="text-align:left;line-height:1.21"><span style="font-size:20.8px;font-weight:700;color:var(--l-sub)">수익은 세 갈래가 된다 (① ② ③)</span></div></div>
+      <div class="el pcard" style="left:578px;top:604px;width:444px;height:162px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:605px;top:622px;width:396px;height:12px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">수익 ② · NOW</span></div></div>
+      <div class="el" style="left:605px;top:653px;width:396px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">크레딧</span></div></div>
+      <div class="el" style="left:605px;top:694px;width:396px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">만드는 사람이 내는 도구 사용료</span></div></div>
+      <div class="el pcard" style="left:110px;top:604px;width:444px;height:162px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:137px;top:622px;width:396px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">수익 ① · MARKETPLACE</span></div></div>
+      <div class="el" style="left:137px;top:653px;width:396px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">거래 수수료</span></div></div>
+      <div class="el" style="left:137px;top:694px;width:396px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">템플릿과 앱이 팔릴 때 떼는 몫</span></div></div>
+      <div class="el pcard" style="left:1046px;top:604px;width:444px;height:162px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1073px;top:622px;width:396px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">수익 ③ · MATURITY</span></div></div>
+      <div class="el" style="left:1073px;top:653px;width:396px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">광고</span></div></div>
+      <div class="el" style="left:1073px;top:694px;width:396px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">커뮤니티의 관심을 광고주에게 판매</span></div></div>
+      <div class="el" style="left:786px;top:250px;width:704px;height:272px;border:2.0px dashed #b9b2c6;border-radius:22px"></div>
+      <div class="el" style="left:516px;top:354px;width:234px;height:25px;background:#b8b8bf;clip-path:polygon(0 30%,82% 30%,82% 0,100% 50%,82% 100%,82% 70%,0 70%)"></div>
+      <div class="el" style="left:516px;top:424px;width:234px;height:25px;transform:scaleX(-1) scaleY(-1);background:#b8b8bf;clip-path:polygon(0 30%,82% 30%,82% 0,100% 50%,82% 100%,82% 70%,0 70%)"></div>
+      <div class="el" style="left:516px;top:314px;width:234px;height:30px"><div style="text-align:center;line-height:1.20"><span style="font-size:17.5px;font-weight:700;color:#8a8693">템플릿 · 앱</span></div></div>
+      <div class="el" style="left:516px;top:456px;width:234px;height:30px"><div style="text-align:center;line-height:1.20"><span style="font-size:17.5px;font-weight:700;color:#8a8693">구매 대금</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: HBS Case 9-826-220, p.7</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 18 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · PRICING</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">추가 수익 모델:</span></div><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">성숙기에 다다르면 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">버티컬 광고 수익</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">도 가능하다 </span></div></h2>
+      <img class="el pimg" src="images/p2/h73ef4657854202bb_1_79.jpg" alt="" style="left:578px;top:282px;width:444px;height:239px">
+      <div class="el pcard" style="left:110px;top:552px;width:444px;height:156px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:131px;top:566px;width:403px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">01 · 광고 상품이 많다</span></div></div>
+      <div class="el" style="left:131px;top:598px;width:403px;height:38px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">광고 상품만 8가지</span></div></div>
+      <div class="el" style="left:131px;top:638px;width:403px;height:60px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">종료광고, 피드광고, 스토리 광고, 타겟팅 옵션까지 골라 살 수 있다</span></div></div>
+      <div class="el pcard" style="left:578px;top:552px;width:444px;height:156px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:599px;top:566px;width:403px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">02 · 상품 하나하나가 매출이다</span></div></div>
+      <div class="el" style="left:599px;top:598px;width:403px;height:38px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">예: 종료광고</span></div></div>
+      <div class="el" style="left:599px;top:638px;width:403px;height:60px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">노출 위치와 가격이 정해진 상품으로 광고주에게 판다</span></div></div>
+      <div class="el pcard" style="left:1046px;top:552px;width:444px;height:156px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1067px;top:566px;width:403px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">03 · 바탕은 유저 데이터</span></div></div>
+      <div class="el" style="left:1067px;top:598px;width:403px;height:38px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">유저행동분석리포트</span></div></div>
+      <div class="el" style="left:1067px;top:638px;width:403px;height:60px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">커뮤니티에 쌓인 업계·직군·관심·행동 데이터로 광고 효과를 분석해 준다</span></div></div>
+      <div class="el" style="left:110px;top:728px;width:1380px;height:62px;background:#12112a;border-radius:14px;display:flex;flex-direction:column;justify-content:center;padding:0 12px"><div style="text-align:center;line-height:1.20"><span style="font-size:21.7px;font-weight:700;color:#ffffff">러버블도 비개발자 창업자 커뮤니티에 쌓인 데이터로 같은 광고 상품을 만들 수 있다</span></div></div>
+      <img class="el pimg" src="images/p2/blind_list.jpg" alt="" style="left:111px;top:282px;width:443px;height:243px">
+      <img class="el pimg" src="images/p2/blind_report.jpg" alt="" style="left:1047px;top:282px;width:443px;height:251px">
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: Blind 광고 상품 소개서</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 19 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · WHY IT SURVIVES</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">그래서, </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">왜 살아남는가</span></div></h2>
+      <div class="el pcard" style="left:110px;top:260px;width:444px;height:330px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:146px;top:294px;width:465px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">01</span></div></div>
+      <div class="el" style="left:146px;top:326px;width:465px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">따라하기 어렵다</span></div></div>
+      <div class="el" style="left:146px;top:386px;width:372px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">커뮤니티와 시장은 사용자가 모여야 생기는 가치. 모델 회사가 기술로 복제할 수 없다</span></div></div>
+      <div class="el pcard" style="left:578px;top:260px;width:444px;height:330px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:614px;top:294px;width:465px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">02</span></div></div>
+      <div class="el" style="left:614px;top:326px;width:465px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">원가에 덜 흔들린다</span></div></div>
+      <div class="el" style="left:614px;top:386px;width:372px;height:90px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">크레딧 수익은 모델 사용료에 따라 이익이 흔들린다. 수수료와 광고는 그 영향을 덜 받는다</span></div></div>
+      <div class="el pcard" style="left:1046px;top:260px;width:444px;height:330px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1082px;top:294px;width:465px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">03</span></div></div>
+      <div class="el" style="left:1082px;top:326px;width:465px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">떠나면 잃는 것이 생긴다</span></div></div>
+      <div class="el" style="left:1082px;top:386px;width:372px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">지금은 코드를 들고 나가면 끝. 플랫폼이 되면 커뮤니티, 평판, 거래 이력을 두고 가야 한다</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 20 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · WINNER TAKES ALL</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">승자독식의 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">세 조건</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">, 지금은 하나</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">차별화로 시작해, 장치를 만들어 나머지 조건을 </span><span style="font-size:21.7px;color:var(--l-sub)">채워 간다</span></div></div>
+      <div class="el pcard" style="left:1059px;top:290px;width:444px;height:297px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1095px;top:324px;width:465px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">CONDITION 3</span></div></div>
+      <div class="el" style="left:1095px;top:357px;width:465px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">높은 멀티호밍 비용</span></div></div>
+      <div class="el" style="left:1095px;top:414px;width:91px;height:33px;background:#f7e1d7;border-radius:7px"></div>
+      <div class="el" style="left:1109px;top:421px;width:88px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-orange)">지금: 약함</span></div></div>
+      <div class="el" style="left:1095px;top:459px;width:372px;height:90px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">창작자는 다른 마켓에도 올리고, 비개발자는 코드를 들고 나갈 수 있다</span></div><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;font-weight:700;color:var(--l-ink)">→ 고착화 장치로 채운다(r</span><span style="font-size:20.8px;font-weight:700;color:var(--l-ink)">etention)</span></div></div>
+      <div class="el pcard" style="left:578px;top:290px;width:444px;height:297px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:614px;top:324px;width:465px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">CONDITION 2</span></div></div>
+      <div class="el" style="left:614px;top:356px;width:465px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">강한 교차 네트워크 효과</span></div></div>
+      <div class="el" style="left:614px;top:414px;width:123px;height:33px;background:#f4e0e1;border-radius:7px"></div>
+      <div class="el" style="left:628px;top:421px;width:119px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">만들어 갈 것</span></div></div>
+      <div class="el" style="left:614px;top:459px;width:372px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">사고파는 시장이 없다</span></div><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;font-weight:700;color:var(--l-ink)">→ 양면 플랫폼 구조로 채운다</span></div></div>
+      <div class="el pcard" style="left:110px;top:290px;width:444px;height:297px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:146px;top:324px;width:465px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">CONDITION </span><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">1</span></div></div>
+      <div class="el" style="left:146px;top:357px;width:465px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">차별화</span></div></div>
+      <div class="el" style="left:146px;top:417px;width:91px;height:33px;background:#e3e2ea;border-radius:7px"></div>
+      <div class="el" style="left:160px;top:424px;width:88px;height:19px"><div style="text-align:left;line-height:1.45"><span style="font-size:15.8px;font-weight:700;color:var(--l-blue)">지금: 있음</span></div></div>
+      <div class="el" style="left:146px;top:459px;width:372px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;color:var(--l-sub)">비개발자 전용, 커뮤니티 소속감</span></div><div style="text-align:left;line-height:1.62"><span style="font-size:20.8px;font-weight:700;color:var(--l-ink)">→ 유지하고 키운다</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 21 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · LOCK-IN</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">머물 이유는 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">Lovable이 만들어 줘야</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)"> 한다</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">창작자에게는 수익과 지위의 투트랙, 비개발자에게는 </span><span style="font-size:21.7px;color:var(--l-sub)">단계에 맞는 커뮤니티 가치 (retention)</span></div></div>
+      <div class="el" style="left:132px;top:288px;width:383px;height:20px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-weight:700;color:#8a8693">사용자</span></div></div>
+      <div class="el" style="left:482px;top:288px;width:383px;height:20px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-weight:700;color:#8a8693">장치 1</span></div></div>
+      <div class="el" style="left:833px;top:288px;width:383px;height:20px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-weight:700;color:#8a8693">장치 2</span></div></div>
+      <div class="el" style="left:1184px;top:288px;width:383px;height:20px"><div style="text-align:left;line-height:1.22"><span style="font-size:16.7px;font-weight:700;color:#8a8693">떠나면 잃는 것</span></div></div>
+      <div class="el" style="left:110px;top:321px;width:328px;height:96px;background:#fefdfc;border:2.0px solid var(--l-blue);border-radius:21px"></div>
+      <div class="el" style="left:132px;top:340px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">창작자</span></div></div>
+      <div class="el" style="left:132px;top:376px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">공급 사이드</span></div></div>
+      <div class="el" style="left:460px;top:321px;width:328px;height:96px;background:#fefdfc;border-radius:21px"></div>
+      <div class="el" style="left:482px;top:340px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">추가 대금</span></div></div>
+      <div class="el" style="left:482px;top:376px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">오래 거래한 창작자에게</span></div></div>
+      <div class="el" style="left:811px;top:321px;width:328px;height:96px;background:#fefdfc;border-radius:21px"></div>
+      <div class="el" style="left:833px;top:340px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">지위 · 소속감</span></div></div>
+      <div class="el" style="left:833px;top:376px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">해커톤 심사위원 자격</span></div></div>
+      <div class="el" style="left:1162px;top:321px;width:328px;height:96px;background:var(--l-ink);border-radius:21px"></div>
+      <div class="el" style="left:1184px;top:340px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:#ffffff">수익률과 지위</span></div></div>
+      <div class="el" style="left:1184px;top:376px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:#fcfbf9">다시 쌓아야 한다</span></div></div>
+      <div class="el" style="left:110px;top:431px;width:328px;height:96px;background:#fefdfc;border:2.0px solid var(--l-pink);border-radius:21px"></div>
+      <div class="el" style="left:132px;top:450px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">비개발자</span></div></div>
+      <div class="el" style="left:132px;top:486px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">출시 전</span></div></div>
+      <div class="el" style="left:460px;top:431px;width:328px;height:96px;background:#fefdfc;border-radius:21px"></div>
+      <div class="el" style="left:482px;top:450px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">커뮤니티 검증</span></div></div>
+      <div class="el" style="left:482px;top:486px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">출시 전에 미리 점검</span></div></div>
+      <div class="el" style="left:811px;top:431px;width:328px;height:96px;background:#fefdfc;border-radius:21px"></div>
+      <div class="el" style="left:833px;top:450px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">유지보수 도움</span></div></div>
+      <div class="el" style="left:833px;top:486px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">먼저 겪은 사람의 해결책</span></div></div>
+      <div class="el" style="left:1162px;top:431px;width:328px;height:96px;background:var(--l-ink);border-radius:21px"></div>
+      <div class="el" style="left:1184px;top:450px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:#ffffff">사전 검증</span></div></div>
+      <div class="el" style="left:1184px;top:486px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:#fcfbf9">위험을 혼자 진다</span></div></div>
+      <div class="el" style="left:110px;top:542px;width:328px;height:96px;background:#fefdfc;border:2.0px solid var(--l-pink);border-radius:21px"></div>
+      <div class="el" style="left:132px;top:561px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">졸업한 창업자</span></div></div>
+      <div class="el" style="left:132px;top:596px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">서비스 성장 후</span></div></div>
+      <div class="el" style="left:460px;top:542px;width:328px;height:96px;background:#fefdfc;border-radius:21px"></div>
+      <div class="el" style="left:482px;top:561px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">뱃지 · 창업자 모임</span></div></div>
+      <div class="el" style="left:482px;top:596px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">Made by Lovable</span></div></div>
+      <div class="el" style="left:811px;top:542px;width:328px;height:96px;background:#fefdfc;border-radius:21px"></div>
+      <div class="el" style="left:833px;top:561px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">새 기능 템플릿</span></div></div>
+      <div class="el" style="left:833px;top:596px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-sub)">맞춤으로 빠르게 안내</span></div></div>
+      <div class="el" style="left:1162px;top:542px;width:328px;height:96px;background:var(--l-ink);border-radius:21px"></div>
+      <div class="el" style="left:1184px;top:561px;width:356px;height:29px"><div style="text-align:left;line-height:1.55"><span style="font-size:24.2px;font-weight:700;color:#ffffff">소속감 · 고도화</span></div></div>
+      <div class="el" style="left:1184px;top:596px;width:356px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:#fcfbf9">쉽게 붙이던 기능</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 22 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · LAUNCH &amp; GROWTH</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">지금은 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">양면시장을 만드는</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)"> 단계</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">플랫폼 성장 4단계 모형에 맞춘 단계별 할 일</span></div></div>
+      <div class="el" style="left:110px;top:290px;width:1380px;height:6px;background:var(--l-pink);border-radius:1px"></div>
+      <div class="el pcard" style="left:110px;top:322px;width:327px;height:262px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:138px;top:348px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">STAGE 1</span></div></div>
+      <div class="el" style="left:138px;top:380px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">진입</span></div></div>
+      <div class="el" style="left:138px;top:429px;width:339px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">제품으로 사용자 확보</span></div></div>
+      <div class="el" style="left:135px;top:467px;width:314px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-ink)">단면우선: 비개발자용 도구 먼저</span></div></div>
+      <div class="el" style="left:134px;top:500px;width:314px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-ink)">이미 지난 단계</span></div></div>
+      <div class="el" style="left:461px;top:322px;width:327px;height:262px;background:#fefdfc;border:3.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:489px;top:348px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">STAGE 2 · 지금 여기</span></div></div>
+      <div class="el" style="left:489px;top:380px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">성장</span></div></div>
+      <div class="el" style="left:489px;top:429px;width:339px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">양면시장 만들기</span></div></div>
+      <div class="el" style="left:488px;top:475px;width:314px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-ink)">씨뿌리기: 자체 템플릿으로 첫 공급</span></div></div>
+      <div class="el" style="left:485px;top:504px;width:314px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-ink)">창작자 낮은 수수료</span></div></div>
+      <div class="el" style="left:485px;top:533px;width:314px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-ink)">성공한 창업자를 간판 창작자로</span></div></div>
+      <div class="el pcard" style="left:812px;top:322px;width:327px;height:262px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:840px;top:348px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">STAGE 3</span></div></div>
+      <div class="el" style="left:840px;top:380px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">확장</span></div></div>
+      <div class="el" style="left:840px;top:429px;width:339px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">임계점 넘기</span></div></div>
+      <div class="el" style="left:833px;top:475px;width:314px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;font-weight:700;color:var(--l-ink)">마케팅</span><span style="font-size:18.3px;color:var(--l-ink)">으로 가치 알리기</span></div></div>
+      <div class="el" style="left:835px;top:504px;width:314px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-ink)">고착화 장치로 양쪽 붙잡기</span></div></div>
+      <div class="el pcard" style="left:1163px;top:322px;width:327px;height:262px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:1191px;top:348px;width:339px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">STAGE 4</span></div></div>
+      <div class="el" style="left:1191px;top:380px;width:339px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">성숙</span></div></div>
+      <div class="el" style="left:1191px;top:429px;width:339px;height:22px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">생태계 완성</span></div></div>
+      <div class="el" style="left:1188px;top:475px;width:314px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-ink)">품질 감독과 저품질 삭제</span></div></div>
+      <div class="el" style="left:1190px;top:504px;width:314px;height:21px"><div style="text-align:left;line-height:1.62"><span style="font-size:18.3px;color:var(--l-ink)">광고주 추가: 버티컬 광고</span></div></div>
+      <div class="el" style="left:110px;top:600px;width:328px;height:72px"><div style="text-align:center;line-height:1.20"><span style="font-size:20.0px;font-weight:700;color:var(--l-sub)">단면우선 전략</span></div></div>
+      <div class="el" style="left:461px;top:600px;width:328px;height:72px"><div style="text-align:center;line-height:1.20"><span style="font-size:20.0px;font-weight:700;color:var(--l-sub)">씨뿌리기 전략</span></div><div style="text-align:center;line-height:1.20"><span style="font-size:20.0px;font-weight:700;color:var(--l-sub)">유인 가격 모델</span></div></div>
+      <div class="el" style="left:846px;top:598px;width:238px;height:72px"><div style="text-align:center;line-height:1.20"><span style="font-size:20.0px;font-weight:700;color:var(--l-sub)">배스 확산 모형</span></div></div>
+      <div class="el" style="left:801px;top:624px;width:328px;height:72px"><div style="text-align:center;line-height:1.20"><span style="font-size:20.0px;font-weight:700;color:var(--l-sub)">빅뱅 수용 전략</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 23 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">07 · GOVERNANCE</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">첫 템플릿은 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">미끼</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">일 뿐, 이후에는 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">운영자</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">가 된다</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">양쪽이 자발적으로 주고받아야 </span><span style="font-size:21.7px;color:var(--l-sub)">플랫폼이 돈다</span><span style="font-size:21.7px;color:var(--l-sub)">. 계속 만들면 창작자와 </span><span style="font-size:21.7px;color:var(--l-sub)">경쟁하게 된다</span></div></div>
+      <div class="el" style="left:110px;top:293px;width:193px;height:22px"><div style="text-align:left;line-height:1.42"><span style="font-size:18.3px;font-weight:700;color:var(--l-sub)">러버블의 역할 변화</span></div></div>
+      <div class="el" style="left:110px;top:330px;width:400px;height:110px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:22px"></div>
+      <div class="el" style="left:214px;top:356px;width:193px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">초기: 씨뿌리기</span></div></div>
+      <div class="el" style="left:206px;top:392px;width:209px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">자체 템플릿을 미끼로</span></div></div>
+      <div class="el" style="left:600px;top:330px;width:400px;height:110px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:22px"></div>
+      <div class="el" style="left:686px;top:356px;width:227px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">공급이 충분해지면</span></div></div>
+      <div class="el" style="left:719px;top:392px;width:162px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">자체 제작 중단</span></div></div>
+      <div class="el" style="left:1090px;top:330px;width:400px;height:110px;background:#fefefd;border:3.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:1204px;top:356px;width:173px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">이후: 운영자</span></div></div>
+      <div class="el" style="left:1179px;top:392px;width:222px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">품질 감독 · 저품질 삭제</span></div></div>
+      <div class="el" style="left:110px;top:503px;width:166px;height:22px"><div style="text-align:left;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">품질 관리 두 겹</span></div></div>
+      <div class="el" style="left:110px;top:540px;width:300px;height:110px;background:#e3e2ea;border:2.0px solid var(--l-blue);border-radius:22px"></div>
+      <div class="el" style="left:177px;top:566px;width:166px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">템플릿 등록</span></div></div>
+      <div class="el" style="left:207px;top:602px;width:107px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-blue)">창작자</span></div></div>
+      <div class="el" style="left:470px;top:540px;width:300px;height:110px;background:#f4e0e1;border:2.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:527px;top:566px;width:186px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">커뮤니티 검증</span></div></div>
+      <div class="el" style="left:532px;top:602px;width:175px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-pink)">1겹: 사용자 리뷰</span></div></div>
+      <div class="el" style="left:830px;top:540px;width:300px;height:110px;background:var(--l-ink);border:2.0px solid var(--l-ink);border-radius:22px"></div>
+      <div class="el" style="left:897px;top:566px;width:166px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:#ffffff">러버블 감독</span></div></div>
+      <div class="el" style="left:899px;top:602px;width:162px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:#ffffff">2겹: 기준 확인</span></div></div>
+      <div class="el" style="left:1190px;top:540px;width:300px;height:110px;background:#fefefd;border:2.0px solid #e2dcea;border-radius:22px"></div>
+      <div class="el" style="left:1244px;top:566px;width:191px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">유지 또는 삭제</span></div></div>
+      <div class="el" style="left:1261px;top:602px;width:158px;height:22px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-sub)">저품질은 삭제</span></div></div>
+      <svg class="pfl" viewBox="0 0 1600 900"><defs><marker id="pfa228a8693" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a8693"/></marker></defs><line x1="516.0" y1="385.0" x2="594.0" y2="385.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa228a8693)"/><line x1="1006.0" y1="385.0" x2="1084.0" y2="385.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa228a8693)"/><line x1="416.0" y1="595.0" x2="464.0" y2="595.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa228a8693)"/><line x1="776.0" y1="595.0" x2="824.0" y2="595.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa228a8693)"/><line x1="1136.0" y1="595.0" x2="1184.0" y2="595.0" stroke="#8a8693" stroke-width="2.5" style="color:#8a8693" marker-end="url(#pfa228a8693)"/></svg>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 24 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">08 · WHEN IT FAILS</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">이 제안은 </span><span style="font-size:54.2px;font-weight:800;color:var(--l-orange)">언제 실패</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">하는가</span></div></h2>
+      <div class="el" style="left:110px;top:226px;width:678px;height:78px"><div style="text-align:left;line-height:1.62"><span style="font-size:25.0px">네트워크 효과가 만들어지지 않을 때 실패한다. </span></div><div style="text-align:left;line-height:1.62"><span style="font-size:25.0px">그렇다면 언제 네트워크 효과가 만들어지지 않는가?</span><span style="font-size:21.7px;color:var(--l-sub)"> </span></div></div>
+      <div class="el pcard" style="left:110px;top:372px;width:678px;height:200px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:138px;top:398px;width:778px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">SCENARIO 1</span></div></div>
+      <div class="el" style="left:138px;top:431px;width:778px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">거대 모델 회사로 사용자가 쏠린다</span></div></div>
+      <div class="el" style="left:138px;top:479px;width:622px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">러버블 안에서 네트워크 효과가 시작되지 못한다</span></div><div style="text-align:left;line-height:1.62"><span style="font-size:16.7px;font-weight:700;color:var(--l-orange)">신호: 새 프로젝트 수와 방문자 감소</span></div></div>
+      <div class="el pcard" style="left:812px;top:372px;width:678px;height:200px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:840px;top:398px;width:778px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">SCENARIO 2</span></div></div>
+      <div class="el" style="left:840px;top:431px;width:778px;height:32px"><div style="text-align:left;line-height:1.58"><span style="font-size:26.7px;font-weight:700;color:var(--l-ink)">브랜딩에 실패한다</span></div></div>
+      <div class="el" style="left:840px;top:479px;width:622px;height:58px"><div style="text-align:left;line-height:1.62"><span style="font-size:19.2px;color:var(--l-sub)">커뮤니티와 시장의 가치를 사용자가 모르고, 알리지도 않는다</span></div><div style="text-align:left;line-height:1.62"><span style="font-size:16.7px;font-weight:700;color:var(--l-orange)">신호: 템플릿 거래량과 창작자 수익 정체</span></div></div>
+      <div class="el" style="left:110px;top:616px;width:300px;height:110px;background:#f7e1d7;border:2.0px solid var(--l-orange);border-radius:22px"></div>
+      <div class="el" style="left:164px;top:643px;width:191px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">가치를 못 알림</span></div></div>
+      <div class="el" style="left:171px;top:678px;width:178px;height:21px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-orange)">전환 캠페인 부족</span></div></div>
+      <div class="el" style="left:470px;top:616px;width:300px;height:110px;background:#f7e1d7;border:2.0px solid var(--l-orange);border-radius:22px"></div>
+      <div class="el" style="left:524px;top:643px;width:191px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">가치가 안 보임</span></div></div>
+      <div class="el" style="left:537px;top:678px;width:167px;height:21px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-orange)">커뮤니티 · 마켓</span></div></div>
+      <div class="el" style="left:830px;top:616px;width:300px;height:110px;background:#f7e1d7;border:2.0px solid var(--l-orange);border-radius:22px"></div>
+      <div class="el" style="left:897px;top:643px;width:166px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">임계점 미달</span></div></div>
+      <div class="el" style="left:883px;top:678px;width:193px;height:21px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-orange)">네트워크 효과 없음</span></div></div>
+      <div class="el" style="left:1190px;top:616px;width:300px;height:110px;background:#f7e1d7;border:2.0px solid var(--l-orange);border-radius:22px"></div>
+      <div class="el" style="left:1234px;top:643px;width:212px;height:29px"><div style="text-align:center;line-height:1.43"><span style="font-size:24.2px;font-weight:700;color:var(--l-ink)">모델 회사로 쏠림</span></div></div>
+      <div class="el" style="left:1236px;top:678px;width:209px;height:21px"><div style="text-align:center;line-height:1.42"><span style="font-size:18.3px;color:var(--l-orange)">러버블은 도구로 남음</span></div></div>
+      <svg class="pfl" viewBox="0 0 1600 900"><defs><marker id="pfa23ff6a3d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff6a3d"/></marker></defs><line x1="416.0" y1="671.1" x2="464.0" y2="671.1" stroke="#ff6a3d" stroke-width="2.5" style="color:#ff6a3d" marker-end="url(#pfa23ff6a3d)"/><line x1="776.0" y1="671.1" x2="824.0" y2="671.1" stroke="#ff6a3d" stroke-width="2.5" style="color:#ff6a3d" marker-end="url(#pfa23ff6a3d)"/><line x1="1136.0" y1="671.1" x2="1184.0" y2="671.1" stroke="#ff6a3d" stroke-width="2.5" style="color:#ff6a3d" marker-end="url(#pfa23ff6a3d)"/></svg>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 25 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">08 · MARKETING</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">PLG만으로는 부족하다: </span><span style="font-size:54.2px;font-weight:800;color:var(--l-blue)">인지</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">를 넓히는 마케팅</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">도구의 가치는 써 보면 보이지만, 커뮤니티와 시장의 가치는 사람이 모이기 전에는 </span><span style="font-size:21.7px;color:var(--l-sub)">보이지 않는다</span></div></div>
+      <div class="el" style="left:110px;top:264px;width:864px;height:308px;background:#fefdfc;border:2.0px solid var(--l-blue);border-radius:22px"></div>
+      <div class="el" style="left:138px;top:290px;width:758px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-blue)">AWARENESS · 이름을 알리기</span></div></div>
+      <div class="el" style="left:138px;top:323px;width:758px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">시작했다, 하지만 메시지가 도구에 머문다</span></div></div>
+      <div class="el" style="left:138px;top:396px;width:155px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:#8a8693">한 것</span></div></div>
+      <div class="el" style="left:280px;top:396px;width:660px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-ink)">2026년 3월 첫 브랜드 캠페인 &quot;Earworm&quot;, 4월 Founder Series</span></div></div>
+      <div class="el" style="left:138px;top:450px;width:155px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:#8a8693">메시지</span></div></div>
+      <div class="el" style="left:280px;top:450px;width:660px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-ink)">‘</span><span style="font-size:20.0px;color:var(--l-ink)">아이디어가 떠나지 않으면 만들어라</span><span style="font-size:20.0px;color:var(--l-ink)">’</span></div></div>
+      <div class="el" style="left:138px;top:504px;width:155px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:#8a8693">부족한 것</span></div></div>
+      <div class="el" style="left:280px;top:504px;width:660px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-ink)">‘</span><span style="font-size:20.0px;color:var(--l-ink)">여기서 돈을 번다, 여기서 사고판다</span><span style="font-size:20.0px;color:var(--l-ink)">’</span><span style="font-size:20.0px;color:var(--l-ink)">는 플랫폼 가치</span></div></div>
+      <div class="el yt" data-yt="ADXWl44apao" style="left:1010px;top:283px;width:480px;height:270px;background-image:url(https://i.ytimg.com/vi/ADXWl44apao/hqdefault.jpg)"></div>
+      <div class="el pcard" style="left:110px;top:598px;width:678px;height:177px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:134px;top:610px;width:630px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">근거 1 · 배스 확산 모형 </span></div></div>
+      <div class="el" style="left:134px;top:640px;width:630px;height:38px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">광고가 확산 속도를 정한다</span></div></div>
+      <div class="el" style="left:134px;top:679px;width:630px;height:74px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">새 서비스의 확산은 광고로 움직이는 혁신계수와 입소문으로 움직이는 모방계수로 정해진다. 러버블은 입소문이 강하니, 광고 쪽을 키워야 임계점에 빨리 닿는다</span></div></div>
+      <div class="el pcard" style="left:812px;top:598px;width:678px;height:177px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:836px;top:610px;width:630px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">근거 2 · 빅뱅 수용 전략 </span></div></div>
+      <div class="el" style="left:836px;top:640px;width:630px;height:38px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">한 번에 큰 주목을 끈다</span></div></div>
+      <div class="el" style="left:836px;top:679px;width:630px;height:74px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">전통적인 푸시 마케팅으로 출시 순간에 관심을 모은다 (예: Twitter의 SXSW)</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: Ads of the World (2026.3) · YouTube 사례 영상 2건</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 26 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">08 · MARKETING</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">PLG만으로는 부족하다: </span><span style="font-size:54.2px;font-weight:800;color:var(--l-pink)">전환</span><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">을 만드는 마케팅</span></div></h2>
+      <div class="el" style="left:110px;top:197px;width:1725px;height:26px"><div style="text-align:left;line-height:1.62"><span style="font-size:21.7px;color:var(--l-sub)">도구의 가치는 써 보면 보이지만, 커뮤니티와 시장의 가치는 사람이 모이기 전에는 </span><span style="font-size:21.7px;color:var(--l-sub)">보이지 않는다</span></div></div>
+      <div class="el" style="left:110px;top:264px;width:864px;height:308px;background:#fefdfc;border:2.0px solid var(--l-pink);border-radius:22px"></div>
+      <div class="el" style="left:138px;top:290px;width:758px;height:20px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.0px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">CONVERSION · 참여자로 만들기</span></div></div>
+      <div class="el" style="left:138px;top:323px;width:758px;height:38px"><div style="text-align:left;line-height:1.58"><span style="font-size:31.7px;font-weight:700;color:var(--l-ink)">창작자와 창업자를 직접 키운다</span></div></div>
+      <div class="el" style="left:138px;top:396px;width:155px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:#8a8693">한 것</span></div></div>
+      <div class="el" style="left:280px;top:396px;width:660px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-ink)">해커톤, 앰버서더 프로그램</span></div></div>
+      <div class="el" style="left:138px;top:450px;width:155px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:#8a8693">부족한 것</span></div></div>
+      <div class="el" style="left:280px;top:450px;width:660px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-ink)">&quot;러버블에서 팔면 돈이 된다&quot;는 믿음</span></div></div>
+      <div class="el" style="left:138px;top:504px;width:155px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:#8a8693">참고 사례</span></div></div>
+      <div class="el" style="left:280px;top:504px;width:660px;height:53px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-ink)">DoorDash 가게 성장 자료(GROW), 배달의민족 사장님 사례 콘텐츠</span></div></div>
+      <img class="el pimg" src="images/p2/h4b4484b10d968997_1_60.jpg" alt="DoorDash GROW 화면" style="left:566px;top:617px;width:204px;height:124px">
+      <div class="el yt" data-yt="DjbZKeWKQwg" style="left:1010px;top:264px;width:480px;height:270px;background-image:url(https://i.ytimg.com/vi/DjbZKeWKQwg/hqdefault.jpg)"></div>
+      <div class="el pcard" style="left:110px;top:598px;width:678px;height:162px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:134px;top:610px;width:414px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">전환 마케팅 · DoorDash (미국 배달 플랫폼)</span></div></div>
+      <div class="el" style="left:134px;top:640px;width:414px;height:36px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">가게 성장 자료 GROW</span></div></div>
+      <div class="el" style="left:134px;top:679px;width:414px;height:66px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">가게 사장님에게 온라인 주문, 매장 성장 방법을 직접 가르치는 자료 모음</span></div></div>
+      <div class="el pcard" style="left:812px;top:598px;width:678px;height:162px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:836px;top:610px;width:354px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">전환 마케팅 · 배달의민족</span></div></div>
+      <div class="el" style="left:836px;top:640px;width:354px;height:36px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">사장님 성공 사례 영상</span></div></div>
+      <div class="el" style="left:836px;top:684px;width:312px;height:34px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;font-weight:700;color:#8a8693">오른쪽 위 영상</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99% · Source: Ads of the World (2026.3) · YouTube 사례 영상 2건</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 27 -->
+    <section class="slide pf t-focus dark">
+      <h2 class="el pt" style="left:0px;top:199px;width:1600px;height:212px"><div style="text-align:center;line-height:1.40"><span style="font-size:88.3px;font-weight:800;color:#ffffff">양면 플랫폼 비즈니스로</span></div><div style="text-align:center;line-height:1.40"><span style="font-size:88.3px;font-weight:800;color:var(--l-orange)">도구</span><span style="font-size:88.3px;font-weight:800">가 아닌</span><span style="font-size:88.3px;font-weight:800;color:#ff7aa8"> 하나의 생태계</span><span style="font-size:88.3px;font-weight:800">로</span></div></h2>
+      <img class="el pimg" src="images/p2/s28_adobe.png" alt="Adobe" style="left:387px;top:511px;width:90px;height:92px">
+      <img class="el pimg" src="images/p2/s28_apple.png" alt="Apple" style="left:964px;top:516px;width:125px;height:150px">
+      <div class="el" style="left:758px;top:646px;width:84px;height:74px;background:#9e99ad;clip-path:polygon(50% 0,100% 100%,0 100%)"></div>
+      <img class="el pimg" src="images/p2/lovable_icon.png" alt="Lovable" style="left:1129px;top:549px;width:131px;height:136px">
+      <svg class="pfl" viewBox="0 0 1600 900"><defs></defs><line x1="320.0" y1="595.8" x2="1280.0" y2="696.6" stroke="#9e99ad" stroke-width="6.7" style="color:#9e99ad"/><line x1="704.0" y1="720.6" x2="896.0" y2="720.6" stroke="#9e99ad" stroke-width="5.0" style="color:#9e99ad"/></svg>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
+    <!-- part 2 · 28 -->
+    <section class="slide pf">
+      <div class="el pk" style="left:110px;top:75px;width:1725px;height:24px"><div style="text-align:left;line-height:1.18"><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">0</span><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">9</span><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)"> · </span><span style="font-size:18.3px;font-family:var(--mono);font-weight:700;color:var(--l-pink)">DEBATE</span></div></div>
+      <h2 class="el pt" style="left:110px;top:114px;width:1725px;height:64px"><div style="text-align:left;line-height:1.40"><span style="font-size:54.2px;font-weight:800;color:var(--l-ink)">토론 주제</span></div></h2>
+      <div class="el pcard" style="left:110px;top:264px;width:678px;height:222px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:134px;top:278px;width:630px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">QUESTION 1</span></div></div>
+      <div class="el" style="left:134px;top:310px;width:630px;height:43px"><div style="text-align:left;line-height:1.20"><span style="font-size:28.3px;font-weight:700;color:var(--l-ink)">여러분이 Lovable 오너라면, Exit 하겠습니까?</span></div></div>
+      <div class="el pcard" style="left:812px;top:264px;width:678px;height:222px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:836px;top:278px;width:630px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">QUESTION 2</span></div></div>
+      <div class="el" style="left:836px;top:310px;width:630px;height:43px"><div style="text-align:left;line-height:1.20"><span style="font-size:28.3px;font-weight:700;color:var(--l-ink)">여러분이 선택한 Lovable의 메인 타겟은?</span></div></div>
+      <div class="el" style="left:836px;top:360px;width:630px;height:120px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">비개발자 vs 개발자·엔터프라이즈 vs 플랫폼화</span></div></div>
+      <div class="el pcard" style="left:110px;top:510px;width:678px;height:222px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:134px;top:524px;width:630px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">QUESTION 3</span></div></div>
+      <div class="el" style="left:134px;top:556px;width:630px;height:43px"><div style="text-align:left;line-height:1.20"><span style="font-size:28.3px;font-weight:700;color:var(--l-ink)">앞으로 직업인으로서 개발자가 필요할까요?</span></div></div>
+      <div class="el pcard" style="left:812px;top:510px;width:678px;height:222px;background:#fefdfc;border-radius:22px"></div>
+      <div class="el" style="left:836px;top:524px;width:630px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">QUESTION 4</span></div></div>
+      <div class="el" style="left:836px;top:556px;width:630px;height:43px"><div style="text-align:left;line-height:1.20"><span style="font-size:28.3px;font-weight:700;color:var(--l-ink)">Lovable이 PLG만으로 지속 성장할 수 있을까?</span></div></div>
+      <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
+    </section>
+
   </div>
 
   <div id="dots"></div>
@@ -1981,8 +2766,17 @@
     sStep = atEnd && c ? c - 1 : 0;
     if (c) setStep(SL[n], sStep);
     onSlideEnter(SL[n]);
+    ytSync(SL[n]);
   }
-  function leaveSlides() { const was = sIdx >= 0; sIdx = -1; slidesEl.classList.remove('on'); SL.forEach(s => s.classList.remove('on')); if (was && cur >= 0 && cur < 3) setWorldVisible(true); }
+  /* part 2 marketing slides: the YouTube video starts when its slide opens and stops when you leave */
+  function ytSync(cur) {
+    document.querySelectorAll('.yt').forEach(b => {
+      const on = !!cur && cur.contains(b), f = b.querySelector('iframe');
+      if (on && !f) b.innerHTML = `<iframe src="https://www.youtube.com/embed/${b.dataset.yt}?autoplay=1&rel=0&playsinline=1" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+      else if (!on && f) b.innerHTML = '';
+    });
+  }
+  function leaveSlides() { ytSync(null); const was = sIdx >= 0; sIdx = -1; slidesEl.classList.remove('on'); SL.forEach(s => s.classList.remove('on')); if (was && cur >= 0 && cur < 3) setWorldVisible(true); }
   function slideNext() {
     const c = stepCount(SL[sIdx]);
     if (c && sStep < c - 1) setStep(SL[sIdx], ++sStep);
