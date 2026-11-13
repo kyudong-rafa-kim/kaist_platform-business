@@ -3025,7 +3025,10 @@
       if (s.querySelector('.ovl')) {                                  // culture: keywords page, then THE CHALLENGE page
         setStep(s, 1); page(s.cloneNode(true)); setStep(s, 2); page(s);
       } else {
-        if (c) setStep(s, s.querySelector('.arrp') ? c : c - 1);      // .arrp detail panels stay hidden; markers all shown
+        if (c) setStep(s, s.querySelector('.arrp') ? c : c - 1);      // markers all shown
+        // ARR events: the three click-by-click cards (투자 · M&A · 채용) shown together at 75%, in the empty space above the line
+        const AT = [[2.5, -62], [494.5, -62], [2.5, 94]];
+        s.querySelectorAll('.arrp').forEach((g, i) => { g.classList.add('active'); if (AT[i]) g.setAttribute('transform', `translate(${AT[i][0]} ${AT[i][1]}) scale(.75)`); });
         page(s);
       }
     });
