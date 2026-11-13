@@ -771,6 +771,30 @@
   html.print .page { position: relative; width: 1600px; height: 900px; overflow: hidden; break-after: page; page-break-after: always; }
   html.print .page:last-child { break-after: auto; page-break-after: auto; }
   html.print .page > .slide { opacity: 1; }
+  html.print #ovBtn, html.print #ov { display: none !important; }
+
+  /* ---------- overview: every page as a thumbnail (corner button or G; Esc closes) ---------- */
+  #ovBtn { position: fixed; left: 16px; bottom: 16px; z-index: 50; width: 40px; height: 40px; border: 0; border-radius: 12px; display: grid; place-items: center;
+    background: rgba(20, 18, 28, .55); color: #fff; cursor: pointer; opacity: .28; transition: opacity .2s ease, background .2s ease; }
+  #ovBtn:hover, #ovBtn:focus-visible { opacity: 1; background: rgba(20, 18, 28, .85); }
+  #ov { position: fixed; inset: 0; z-index: 60; display: none; flex-direction: column; background: rgba(16, 14, 22, .94); color: #fff; font-family: var(--pre); }
+  #ov.open { display: flex; }
+  #ov .ovh { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px; font: 700 17px/1 var(--pre); }
+  #ov .ovh span { font: 500 13px/1 var(--mono); color: rgba(255, 255, 255, .55); }
+  #ov .ovh button { border: 0; background: rgba(255, 255, 255, .12); color: #fff; font: 600 14px/1 var(--pre); padding: 10px 16px; border-radius: 10px; cursor: pointer; }
+  #ov .ovg { flex: 1; overflow-y: auto; padding: 4px 28px 32px; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px 18px; align-content: start; }
+  #ov .ovt { cursor: pointer; }
+  #ov .ovf { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px rgba(255, 255, 255, .08); transition: box-shadow .15s ease, transform .15s ease; }
+  #ov .ovt:hover .ovf { box-shadow: 0 0 0 3px #ff6a3d; transform: translateY(-2px); }
+  #ov .ovt.cur .ovf { box-shadow: 0 0 0 3px #4c6ef5; }
+  #ov .ovi { position: absolute; left: 0; top: 0; width: 1600px; height: 900px; transform-origin: 0 0; transform: scale(var(--k, .16)); pointer-events: none; }
+  #ov .ovi > * { opacity: 1; }
+  #ov .ovi *, #ov .ovi *::before, #ov .ovi *::after { transition: none !important; animation-delay: 0s !important; animation-duration: .001s !important; }
+  #ov .ovi .rain, #ov .ovi .caret, #ov .ovi .narr { display: none !important; }
+  #ov .ovl-t { display: flex; gap: 8px; margin-top: 8px; font: 500 13px/1.35 var(--pre); color: rgba(255, 255, 255, .78); }
+  #ov .ovl-t b { flex: none; font: 700 12px/1.35 var(--mono); color: rgba(255, 255, 255, .45); }
+  #ov .ovl-t span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
   @media screen { html.print:not(.shot) body { background: #d9d4dc; } html.print:not(.shot) .page { margin: 24px auto; box-shadow: 0 10px 40px rgba(0, 0, 0, .18); } }
 
   /* ---- part 2 (platform proposal): slides carried over from the Google Slides layout; 1 in = 120 px ---- */
@@ -2307,6 +2331,11 @@
   <div id="dots"></div>
   <div id="autoBadge">● AUTO</div>
 </div>
+<button id="ovBtn" type="button" title="전체 페이지 보기 (G)" aria-label="전체 페이지 보기"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><rect x="1" y="1" width="7" height="7" rx="1.5"/><rect x="10" y="1" width="7" height="7" rx="1.5"/><rect x="1" y="10" width="7" height="7" rx="1.5"/><rect x="10" y="10" width="7" height="7" rx="1.5"/></svg></button>
+<div id="ov" role="dialog" aria-label="전체 페이지">
+  <div class="ovh"><div>전체 페이지 <span>· 클릭하면 이동 · G 또는 Esc로 닫기</span></div><button type="button" id="ovClose">닫기 ✕</button></div>
+  <div class="ovg" id="ovGrid"></div>
+</div>
 
 <script>
 (() => {
@@ -2803,10 +2832,57 @@
     else leaveSlides();
   }
 
+  /* ---------- overview: thumbnails of the intro title + every body slide; click one to jump there ---------- */
+  const ovEl = document.getElementById('ov'), ovGrid = document.getElementById('ovGrid');
+  let ovTiles = null;
+  function buildOverview() {
+    const thumb = (el, label, go) => {
+      const t = document.createElement('div'); t.className = 'ovt';
+      const f = document.createElement('div'); f.className = 'ovf';
+      const i = document.createElement('div'); i.className = 'ovi'; i.appendChild(el); f.appendChild(i);
+      const l = document.createElement('div'); l.className = 'ovl-t'; l.innerHTML = `<b>${label[0]}</b><span></span>`; l.lastChild.textContent = label[1];
+      t.append(f, l); t.addEventListener('click', () => { closeOverview(); go(); });
+      ovGrid.appendChild(t); return t;
+    };
+    const cover = ui.cloneNode(true); cover.classList.add('on', 'final');
+    const tiles = [thumb(cover, ['00', 'Intro · Lovable: Vibe Coding for the Other 99%'], () => show(0))];
+    SL.forEach((s, n) => {
+      const c = s.cloneNode(true);
+      c.classList.add('on', 'typed');
+      c.querySelectorAll('[data-type]').forEach(el => { el.textContent = el.dataset.type; });
+      c.querySelectorAll('.yt').forEach(b => { b.innerHTML = ''; b.classList.remove('playing'); });
+      const k = stepCount(c);
+      if (k) setStep(c, c.querySelector('.ovl') ? 1 : c.querySelector('.arrp') ? k : k - 1);   // show the finished slide
+      const h = c.querySelector('h2');
+      tiles.push(thumb(c, [String(n + 1).padStart(2, '0'), h ? h.textContent.trim() : ''], () => {
+        clearTimers(); hideNarr(); narrOpen = false; goSlide(n);
+      }));
+    });
+    return tiles;
+  }
+  const ovFit = () => { const f = ovGrid.querySelector('.ovf'); if (f) ovGrid.style.setProperty('--k', f.clientWidth / 1600); };
+  function openOverview() {
+    if (!ovTiles) ovTiles = buildOverview();
+    if (auto) toggleAuto();
+    const at = sIdx >= 0 ? sIdx + 1 : 0;
+    ovTiles.forEach((t, i) => t.classList.toggle('cur', i === at));
+    ovEl.classList.add('open'); ovFit();
+    ovTiles[at].scrollIntoView({ block: 'center' });
+  }
+  function closeOverview() { ovEl.classList.remove('open'); }
+  document.getElementById('ovBtn').addEventListener('click', e => { e.stopPropagation(); ovEl.classList.contains('open') ? closeOverview() : openOverview(); });
+  document.getElementById('ovClose').addEventListener('click', closeOverview);
+  addEventListener('resize', () => { if (ovEl.classList.contains('open')) ovFit(); });
+
   /* ---------- input ---------- */
   const hideHint = () => {};
   stage.addEventListener('click', () => { hideHint(); next(); });
   addEventListener('keydown', e => {
+    if (ovEl.classList.contains('open')) {                            // overview open: only G / Esc (close)
+      if (e.key === 'Escape' || e.key === 'g' || e.key === 'G') closeOverview();
+      return;
+    }
+    if (e.key === 'g' || e.key === 'G') return openOverview();
     if (['ArrowRight', ' ', 'PageDown', 'Enter'].includes(e.key)) { e.preventDefault(); hideHint(); next(); }
     else if (['ArrowLeft', 'PageUp'].includes(e.key)) { hideHint(); prev(); }
     else if (e.key === 'p' || e.key === 'P') { hideHint(); toggleAuto(); }
