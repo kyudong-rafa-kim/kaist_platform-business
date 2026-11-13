@@ -782,6 +782,15 @@
   .pf .pfl { position: absolute; left: 0; top: 0; width: 1600px; height: 900px; pointer-events: none; overflow: visible; }
   .pf .yt { background: #111 center / cover no-repeat; border-radius: 16px; overflow: hidden; box-shadow: 0 18px 48px rgba(30, 20, 60, .18); }
   .pf .yt iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .pf .yt, .pf .plink { pointer-events: auto; }   /* #slides ignores clicks; these two take them */
+  .pf .yt-click { cursor: pointer; background-color: #fff; }
+  .pf .yt-click::after { content: ""; position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%;
+    background: rgba(17, 17, 20, .72) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6.5v11l9-5.5z' fill='%23fff'/%3E%3C/svg%3E") center / 44px no-repeat;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25); transition: transform .2s ease; }
+  .pf .yt-click:hover::after { transform: scale(1.08); }
+  .pf .yt-click.playing { background-image: none !important; background-color: #000; cursor: default; }
+  .pf .yt-click.playing::after { display: none; }
+  .print .pf .yt-click::after { display: none; }
 </style>
 </head>
 <body>
@@ -2247,16 +2256,16 @@
       <div class="el" style="left:280px;top:450px;width:660px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-ink)">&quot;러버블에서 팔면 돈이 된다&quot;는 믿음</span></div></div>
       <div class="el" style="left:138px;top:504px;width:155px;height:24px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;font-weight:700;color:#8a8693">참고 사례</span></div></div>
       <div class="el" style="left:280px;top:504px;width:660px;height:53px"><div style="text-align:left;line-height:1.62"><span style="font-size:20.0px;color:var(--l-ink)">DoorDash 가게 성장 자료(GROW), 배달의민족 사장님 사례 콘텐츠</span></div></div>
-      <img class="el pimg" src="images/p2/h4b4484b10d968997_1_60.jpg" alt="DoorDash GROW 화면" style="left:566px;top:617px;width:204px;height:124px">
-      <div class="el yt" data-yt="DjbZKeWKQwg" style="left:1010px;top:264px;width:480px;height:270px;background-image:url(https://i.ytimg.com/vi/DjbZKeWKQwg/hqdefault.jpg)"></div>
+      <div class="el yt yt-click" data-yt="ricEnveG1eU" title="클릭하면 영상 재생" style="left:1010px;top:264px;width:480px;height:292px;background-image:url(images/p2/h4b4484b10d968997_1_60.jpg)"></div>
       <div class="el pcard" style="left:110px;top:598px;width:678px;height:162px;background:#fefdfc;border-radius:22px"></div>
-      <div class="el" style="left:134px;top:610px;width:414px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">전환 마케팅 · DoorDash (미국 배달 플랫폼)</span></div></div>
-      <div class="el" style="left:134px;top:640px;width:414px;height:36px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">가게 성장 자료 GROW</span></div></div>
-      <div class="el" style="left:134px;top:679px;width:414px;height:66px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">가게 사장님에게 온라인 주문, 매장 성장 방법을 직접 가르치는 자료 모음</span></div></div>
+      <div class="el" style="left:134px;top:610px;width:630px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">전환 마케팅 · DoorDash (미국 배달 플랫폼)</span></div></div>
+      <div class="el" style="left:134px;top:640px;width:630px;height:36px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">가게 성장 자료 GROW</span></div></div>
+      <div class="el" style="left:134px;top:679px;width:630px;height:66px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;color:var(--l-sub)">가게 사장님에게 온라인 주문, 매장 성장 방법을 직접 가르치는 자료 모음 (오른쪽 위 화면)</span></div></div>
       <div class="el pcard" style="left:812px;top:598px;width:678px;height:162px;background:#fefdfc;border-radius:22px"></div>
       <div class="el" style="left:836px;top:610px;width:354px;height:30px"><div style="text-align:left;line-height:1.20"><span style="font-size:15.8px;font-weight:700;color:var(--l-pink)">전환 마케팅 · 배달의민족</span></div></div>
       <div class="el" style="left:836px;top:640px;width:354px;height:36px"><div style="text-align:left;line-height:1.20"><span style="font-size:23.3px;font-weight:700;color:var(--l-ink)">사장님 성공 사례 영상</span></div></div>
-      <div class="el" style="left:836px;top:684px;width:312px;height:34px"><div style="text-align:left;line-height:1.20"><span style="font-size:18.3px;font-weight:700;color:#8a8693">오른쪽 위 영상</span></div></div>
+      <div class="el" style="left:836px;top:684px;width:312px;height:34px"><div style="text-align:left;line-height:1.20"><a class="plink" href="https://www.youtube.com/watch?v=DjbZKeWKQwg" target="_blank" rel="noopener" style="font-size:18.3px;font-weight:700;color:var(--l-blue)">영상 보기</a></div></div>
+      <img class="el pimg" src="images/p2/h4b4484b10d968997_1_65.jpg" alt="" style="left:1190px;top:641px;width:276px;height:76px">
       <footer><span>Lovable: Vibe Coding for the Other 99% · Source: Ads of the World (2026.3) · YouTube 사례 영상 2건</span><span class="pg"></span></footer>
     </section>
 
@@ -2769,13 +2778,17 @@
     ytSync(SL[n]);
   }
   /* part 2 marketing slides: the YouTube video starts when its slide opens and stops when you leave */
+  const ytPlay = b => { b.classList.add('playing'); b.innerHTML = `<iframe src="https://www.youtube.com/embed/${b.dataset.yt}?autoplay=1&rel=0&playsinline=1" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`; };
   function ytSync(cur) {
     document.querySelectorAll('.yt').forEach(b => {
       const on = !!cur && cur.contains(b), f = b.querySelector('iframe');
-      if (on && !f) b.innerHTML = `<iframe src="https://www.youtube.com/embed/${b.dataset.yt}?autoplay=1&rel=0&playsinline=1" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
-      else if (!on && f) b.innerHTML = '';
+      if (on && !f && !b.classList.contains('yt-click')) ytPlay(b);       // autoplay videos start with their slide
+      else if (!on && f) { b.innerHTML = ''; b.classList.remove('playing'); }
     });
   }
+  // click-to-play: the screenshot turns into the video in place (clicks here don't advance the slide)
+  document.querySelectorAll('.yt-click').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); if (!b.querySelector('iframe')) ytPlay(b); }));
+  document.querySelectorAll('.pf .plink, .pf .yt:not(.yt-click)').forEach(a => a.addEventListener('click', e => e.stopPropagation()));
   function leaveSlides() { ytSync(null); const was = sIdx >= 0; sIdx = -1; slidesEl.classList.remove('on'); SL.forEach(s => s.classList.remove('on')); if (was && cur >= 0 && cur < 3) setWorldVisible(true); }
   function slideNext() {
     const c = stepCount(SL[sIdx]);
