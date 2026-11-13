@@ -784,6 +784,14 @@
   .pf .yt iframe { width: 100%; height: 100%; border: 0; display: block; }
   .pf .pfade { opacity: 0; transition: opacity .7s ease var(--d, 0s); }
   .slide.on .pfade { opacity: 1; }
+  /* 54 · seesaw: wobbles a little around level, then tips toward Apple + Lovable (the drawn layout is the tipped end state) */
+  .pf .seesaw { position: absolute; inset: 0; transform-origin: 800px 646px; }
+  .pf .ss-l { transform-origin: 50% 100%; }
+  .slide.on .seesaw { animation: ssTip 3.6s ease-in-out .9s both; }
+  .slide.on .ss-l { animation: ssKeep 3.6s ease-in-out .9s both; }
+  @keyframes ssTip  { 0% { transform: rotate(-6deg); } 14% { transform: rotate(-7.6deg); } 28% { transform: rotate(-4.6deg); } 42% { transform: rotate(-7deg); } 56% { transform: rotate(-5.3deg); } 66% { transform: rotate(-6deg); } 90% { transform: rotate(.7deg); } 100% { transform: rotate(0); } }
+  @keyframes ssKeep { 0% { transform: rotate(6deg); } 14% { transform: rotate(7.6deg); } 28% { transform: rotate(4.6deg); } 42% { transform: rotate(7deg); } 56% { transform: rotate(5.3deg); } 66% { transform: rotate(6deg); } 90% { transform: rotate(-.7deg); } 100% { transform: rotate(0); } }
+  .print .seesaw, .print .ss-l { animation: none !important; }
   .pf.on .yt, .pf.on .plink { pointer-events: auto; }   /* #slides ignores clicks; only the visible slide's video box and links take them */
   .pf .yt-click { cursor: pointer; background-color: #fff; }
   .pf .yt-click.playing { background-image: none !important; background-color: #000; cursor: default; }
@@ -2268,11 +2276,9 @@
     <!-- part 2 · 27 -->
     <section class="slide pf t-focus dark">
       <h2 class="rise el pt" style="--d:0.10s;left:0px;top:199px;width:1600px;height:212px"><div style="text-align:center;line-height:1.40"><span style="font-size:88.3px;font-weight:800;color:#ffffff">양면 플랫폼 비즈니스로</span></div><div style="text-align:center;line-height:1.40"><span style="font-size:88.3px;font-weight:800;color:var(--l-orange)">도구</span><span style="font-size:88.3px;font-weight:800">가 아닌</span><span style="font-size:88.3px;font-weight:800;color:#ff7aa8"> 하나의 생태계</span><span style="font-size:88.3px;font-weight:800">로</span></div></h2>
-      <img class="rise el pimg" src="images/p2/s28_adobe.png" alt="Adobe" style="--d:0.25s;left:387px;top:511px;width:90px;height:92px">
-      <img class="rise el pimg" src="images/p2/s28_apple.png" alt="Apple" style="--d:0.32s;left:964px;top:516px;width:125px;height:150px">
       <div class="rise el" style="--d:0.46s;left:758px;top:646px;width:84px;height:74px;background:#9e99ad;clip-path:polygon(50% 0,100% 100%,0 100%)"></div>
-      <img class="rise el pimg" src="images/p2/lovable_icon.png" alt="Lovable" style="--d:0.39s;left:1129px;top:549px;width:131px;height:136px">
-      <svg class="pfl rise" style="--d:0.53s" viewBox="0 0 1600 900"><defs></defs><line x1="320.0" y1="595.8" x2="1280.0" y2="696.6" stroke="#9e99ad" stroke-width="6.7" style="color:#9e99ad"/><line x1="704.0" y1="720.6" x2="896.0" y2="720.6" stroke="#9e99ad" stroke-width="5.0" style="color:#9e99ad"/></svg>
+      <div class="seesaw pfade" style="--d:.55s"><svg class="pfl" viewBox="0 0 1600 900"><line x1="320.0" y1="595.8" x2="1280.0" y2="696.6" stroke="#9e99ad" stroke-width="6.7" style="color:#9e99ad"/></svg><img class="el pimg ss-l" src="images/p2/s28_adobe.png" alt="Adobe" style="left:387px;top:511px;width:90px;height:92px"><img class="el pimg ss-l" src="images/p2/s28_apple.png" alt="Apple" style="left:964px;top:516px;width:125px;height:150px"><img class="el pimg ss-l" src="images/p2/lovable_icon.png" alt="Lovable" style="left:1129px;top:549px;width:131px;height:136px"></div>
+      <svg class="pfl rise" style="--d:0.53s" viewBox="0 0 1600 900"><defs></defs><line x1="704.0" y1="720.6" x2="896.0" y2="720.6" stroke="#9e99ad" stroke-width="5.0" style="color:#9e99ad"/></svg>
       <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
     </section>
 
