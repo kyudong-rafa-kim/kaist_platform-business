@@ -445,7 +445,8 @@
 
   /* ---- 5 · valuation ---- */
   .val { position: absolute; left: 120px; right: 120px; top: 290px; bottom: 100px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 60px; align-items: center; }
-  .val .big { font: 800 210px/.9 var(--pre); letter-spacing: -.06em; }
+  .val .big { font: 800 210px/.9 var(--pre); letter-spacing: -.06em; white-space: nowrap; }
+  .val .big .unit { font-size: .32em; letter-spacing: -.02em; margin-left: .12em; }
   .val .bsub { margin-top: 18px; font: 600 22px/1.4 var(--pre); color: var(--l-sub); }
   .val .cmp { display: flex; flex-direction: column; gap: 18px; }
   .val .row { display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-radius: 20px; background: rgba(255, 255, 255, .85); box-shadow: 0 0 0 1px rgba(0, 0, 0, .04); }
@@ -986,7 +987,7 @@
   <div class="narr" data-scene="2">
     <h2>모든 서비스 기업에는<br>거대한 개발팀이 있었습니다</h2>
     <div class="stats">
-      <div class="stat"><div class="num sm" data-to="10000" data-post="명">0명</div><div class="label">Windows Vista 개발 인력 · 5년 · 인건비 $10B</div></div>
+      <div class="stat"><div class="num sm" data-to="10000" data-post="명">0명</div><div class="label">Windows Vista 개발 인력 · 5년 · 인건비 100억 달러</div></div>
       <div class="stat"><div class="num sm" data-to="65000" data-pre="$">$0</div><div class="label">외주 MVP 1개 비용 중앙값 · 수개월 소요</div></div>
     </div>
     <div class="src">Source: HBS Case 9-826-220, p.2</div>
@@ -1133,8 +1134,8 @@
     <section class="slide t-center viz s-arr">
       <div class="head">
         <div class="kicker rise">01 · Growth</div>
-        <h2 class="rise" style="--d:.1s">출시 2년 만에 ARR <span class="g">$600M</span> 달성</h2>
-        <p class="subt rise" style="--d:.18s">2025.07 $100M에서 14개월 만에 6배로 올라섰습니다 (회사 발표 기준)</p>
+        <h2 class="rise" style="--d:.1s">출시 2년 만에 ARR <span class="g">6억 달러</span> 달성</h2>
+        <p class="subt rise" style="--d:.18s">2025.07 1억 달러에서 14개월 만에 6배로 올라섰습니다 (회사 발표 기준)</p>
       </div>
       <div class="vz" data-build="arr-events"></div>
       <div class="fn">연환산 매출(ARR), 회사 발표 기준 · ● 투자 ◆ M&amp;A ▲ 제품·사업</div>
@@ -1150,12 +1151,12 @@
       </div>
       <div class="val">
         <div class="rise" style="--d:.2s">
-          <div class="big g">$13.3B</div>
+          <div class="big g">133억<small class="unit">달러</small></div>
           <div class="bsub">기업가치 · Series C (2026.08) · 8개월 만에 2배</div>
         </div>
         <div class="cmp">
-          <div class="row rise" style="--d:.4s"><span data-logo="lovable"></span><span class="nm">Lovable</span><span class="eq">$13.3B ÷ $0.6B</span><span class="mx g">×22</span></div>
-          <div class="row cur rise" style="--d:.55s"><span data-logo="cursor"></span><span class="nm">Cursor</span><span class="eq">$60B ÷ $4B</span><span class="mx">×15</span></div>
+          <div class="row rise" style="--d:.4s"><span data-logo="lovable"></span><span class="nm">Lovable</span><span class="eq">133억 ÷ 6억 달러</span><span class="mx g">×22</span></div>
+          <div class="row cur rise" style="--d:.55s"><span data-logo="cursor"></span><span class="nm">Cursor</span><span class="eq">600억 ÷ 40억 달러</span><span class="mx">×15</span></div>
           <div class="call rise" style="--d:.75s">매출 1달러당 몸값이<br>Cursor의 <b>약 1.5배</b></div>
         </div>
       </div>
@@ -1168,7 +1169,7 @@
       <div class="head">
         <div class="kicker rise">01 · Growth</div>
         <h2 class="rise" style="--d:.1s"><span class="o">절반 이하로 꺾인</span> ARR 증가 속도</h2>
-        <p class="subt rise" style="--d:.18s">월평균 증가액이 +$67M(2025.11~2026.02)에서 +$29M(2026.02~09)으로 줄었습니다</p>
+        <p class="subt rise" style="--d:.18s">월평균 증가액이 +6,700만 달러(2025.11~2026.02)에서 +2,900만 달러(2026.02~09)으로 줄었습니다</p>
       </div>
       <div class="vz" data-build="arr-slope"></div>
             <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
@@ -1296,7 +1297,7 @@
         </div>
       </div>
       <div class="visual">
-        <div class="pcard rise" style="--d:.3s"><div class="pic"><div class="mini"><div class="mb"><i style="background:#2f9e44"></i>Court Booking</div><div class="row2"><div class="blk" style="flex:1;height:44px;background:linear-gradient(135deg,#b2f2bb,#40c057)"></div><div class="blk" style="flex:1;height:44px;background:linear-gradient(135deg,#a5d8ff,#339af0)"></div></div><div class="row2"><div class="btn" style="background:#2f9e44;flex:1">예약</div><div class="btn" style="background:#635bff;flex:1">결제</div></div></div></div><div class="pt">창업자·소상공인</div><div class="pd">Q Group: 2주 만에 앱 → 48시간 매출 $3M+</div></div>
+        <div class="pcard rise" style="--d:.3s"><div class="pic"><div class="mini"><div class="mb"><i style="background:#2f9e44"></i>Court Booking</div><div class="row2"><div class="blk" style="flex:1;height:44px;background:linear-gradient(135deg,#b2f2bb,#40c057)"></div><div class="blk" style="flex:1;height:44px;background:linear-gradient(135deg,#a5d8ff,#339af0)"></div></div><div class="row2"><div class="btn" style="background:#2f9e44;flex:1">예약</div><div class="btn" style="background:#635bff;flex:1">결제</div></div></div></div><div class="pt">창업자·소상공인</div><div class="pd">Q Group: 2주 만에 앱 → 48시간 매출 300만 달러+</div></div>
         <div class="pcard rise" style="--d:.4s"><div class="pic"><div class="mini"><div class="mb"><i style="background:#7048e8"></i>My Routine</div><div class="row2" style="align-items:flex-end;height:52px"><div class="blk" style="flex:1;height:20px;background:#d0bfff"></div><div class="blk" style="flex:1;height:34px;background:#b197fc"></div><div class="blk" style="flex:1;height:26px;background:#9775fa"></div><div class="blk" style="flex:1;height:48px;background:#7048e8"></div><div class="blk" style="flex:1;height:40px;background:#845ef7"></div></div><div class="row2"><div class="blk" style="flex:1;height:18px"></div><div class="blk" style="flex:2;height:18px"></div></div></div></div><div class="pt">나를 위한 도구</div><div class="pd">루틴 자동화, 개인 대시보드</div></div>
         <div class="pcard rise" style="--d:.5s"><div class="pic"><div class="mini"><div class="mb"><i style="background:#e64980"></i>Sales Tracker · 사내용</div><div class="blk" style="height:14px;background:#fbdbe7"></div><div class="blk" style="height:12px"></div><div class="blk" style="height:12px"></div><div class="blk" style="height:12px"></div><div class="row2"><div class="btn" style="background:#e64980;width:60px">승인</div></div></div></div><div class="pt">회사 안의 비개발자</div><div class="pd">포춘 500의 3분의 2에서 사용</div></div>
         <div class="pcard rise" style="--d:.6s"><div class="pic"><div class="mini"><div class="mb"><i style="background:#ff6a3d"></i>Invoice Pro · $9/월</div><div class="row2"><div class="blk" style="flex:1;height:52px;background:linear-gradient(180deg,#fff,#ffe8cc)"><svg viewBox="0 0 100 52" width="100%" height="52"><polyline points="4,44 24,38 44,30 64,22 84,12 96,6" fill="none" stroke="#ff6a3d" stroke-width="3"/></svg></div></div><div class="row2"><div class="btn" style="background:#ff6a3d;flex:1">구독하기</div></div></div></div><div class="pt">앱으로 버는 창작자</div><div class="pd">만든 소프트웨어를 팔아 생계</div></div>
@@ -1422,7 +1423,7 @@
     <section class="slide t-center viz">
       <div class="head">
         <div class="kicker rise">03 · Values</div>
-        <h2 class="rise" style="--d:.1s"><span class="g">템플릿 · 커뮤니티 · 해커톤</span> 중심의 생태계</h2>
+        <h2 class="rise" style="--d:.1s"><span class="g">템플릿 · 커뮤니티 · 해커톤</span> 중심의 빌더 네트워크</h2>
         <p class="subt rise" style="--d:.18s">사람들은 기술보다 피드백과 소속감 때문에 옵니다(Schaaf)</p>
       </div>
       <div class="cm2">
@@ -1442,11 +1443,11 @@
         <div class="box pop" data-step="2">
           <div class="bt">02 · COMMUNITY</div>
           <div class="bh">Discord에 모인 빌더들</div>
-          <div><div class="big g">160K+</div><div class="lbl">Discord 멤버</div></div>
+          <div><div class="big g">16만+</div><div class="lbl">Discord 멤버</div></div>
           <div><div class="big" style="font-size:44px">460+</div><div class="lbl">커뮤니티 리더 · 지역 모임 운영</div></div>
           <div class="lbl">프롬프트·가이드를 공유하고, 막힌 문제를 함께 푼다</div>
         </div>
-        <div class="box pop" data-step="3">
+        <div class="box pop" data-step="2">
           <div class="bt">03 · EVENTS</div>
           <div class="bh">해커톤과 오프라인 모임</div>
           <div class="ev">
@@ -1483,11 +1484,11 @@
           <div class="it"><span class="mab" style="background:#2b2838">☁</span><div><b>자체 AWS·Azure 배포</b><small>기업 고객용 (2026.10)</small></div></div>
           <div class="ins">→ 호스팅을 직접 맡아 <b>원가·안정성을 통제</b>하고, 앱이 Lovable에 머물게 한다</div>
           <div class="tag">만든 앱을 Lovable 안에서 운영</div></div></div>
-        <div class="vcol" data-step="2"><div class="chv">고객 찾기</div><div class="vc">
+        <div class="vcol" data-step="1"><div class="chv">고객 찾기</div><div class="vc">
           <div class="it" data-logo2="google"><div><b>그로스 툴 (2026.10)</b><small>Google·Meta 광고, SEO, 지도 등록을 채팅에서</small></div></div>
           <div class="it"><span class="mab" style="background:#ff6a3d">P</span><div><b>파트너 프로그램 (2026.09)</b><small>에이전시·SI가 고객 대신 구축</small></div></div>
           <div class="tag">빌더 3명 중 1명: "고객을 어디서 찾을지 모른다"</div></div></div>
-        <div class="vcol gap" data-step="3"><div class="chv">돈 벌기</div><div class="vc">
+        <div class="vcol gap" data-step="1"><div class="chv">돈 벌기</div><div class="vc">
           <div class="it" data-logo2="stripe"><div><b>Stripe 결제 연동</b><small>앱의 결제는 Stripe를 거친다</small></div></div>
           <div class="it"><span class="mab" style="background:#e64980">?</span><div><b>Lovable의 몫</b><small>앱이 버는 돈에서 가져가는 수수료 없음</small></div></div>
           <div class="it"><span class="mab" style="background:#c9c3d3">∅</span><div><b>마켓플레이스</b><small>앱·템플릿을 사고파는 장터 없음</small></div></div>
@@ -1522,13 +1523,13 @@
         <div class="gc pop" data-step="1"><div class="gn">① DEVELOPER-FIRST</div><div class="gt">개발자용 AI IDE</div>
           <div class="logos"><div class="lg" data-logo="cursor">Cursor</div><div class="lg" data-logo="windsurf">Windsurf</div><div class="lg" data-logo="antigravity">Antigravity</div></div>
           <div class="gk">고객: 전문 개발자 · 기업</div></div>
-        <div class="gc pop" data-step="2"><div class="gn">② HYBRID BUILDER</div><div class="gt">하이브리드 빌더</div>
+        <div class="gc pop" data-step="1"><div class="gn">② HYBRID BUILDER</div><div class="gt">하이브리드 빌더</div>
           <div class="logos"><div class="lg" data-logo="replit">Replit</div><div class="lg" data-logo="v0">v0 (Vercel)</div><div class="lg" data-logo="bolt">Bolt</div></div>
           <div class="gk">고객: 반쯤 기술적인 창업자·인디 개발자</div></div>
-        <div class="gc me pop" data-step="3"><div class="gn">③ CONSUMER NO-CODE</div><div class="gt">소비자용 노코드 빌더</div>
+        <div class="gc me pop" data-step="1"><div class="gn">③ CONSUMER NO-CODE</div><div class="gt">소비자용 노코드 빌더</div>
           <div class="logos"><div class="lg" data-logo="base44">Base44</div><div class="lg" data-logo="lovx">"Lovable for X"</div><div class="lg" data-logo="manus">Manus</div></div>
           <div class="gk">고객: 비개발자 · 1인 창업자</div></div>
-        <div class="gc dark pop" data-step="4"><div class="gn">④ FOUNDATION MODELS</div><div class="gt">모델 회사 · 빅테크</div>
+        <div class="gc dark pop" data-step="2"><div class="gn">④ FOUNDATION MODELS</div><div class="gt">모델 회사 · 빅테크</div>
           <div class="logos"><div class="lg" data-logo="openai">OpenAI</div><div class="lg" data-logo="claude">Anthropic</div><div class="lg" data-logo="google">Google</div></div>
           <div class="gk">고객: 개발자 → 비개발자로 확장</div></div>
       </div>
@@ -1567,7 +1568,7 @@
       <div class="swot">
         <i data-step="0" hidden></i><i data-step="3" hidden></i>
         <div class="sq s" data-step="1"><div class="sl">S</div><div class="sn2">Strengths · 강점</div><ul>
-          <li><b>속도·실행력 = 1순위 해자</b><em>+ 출시 2년 ARR $600M</em></li>
+          <li><b>속도·실행력 = 1순위 해자</b><em>+ 출시 2년 ARR 6억 달러</em></li>
           <li><b>빌드 데이터 플라이휠</b><em>+ 누적 프로젝트 6,000만</em></li>
           <li class="hl"><b>브랜드·커뮤니티 "movement"</b><em>+ Discord 16만+</em></li></ul></div>
         <div class="sq w risk" data-step="2"><div class="sl">W</div><div class="sn2">Weaknesses · 약점 <span class="ck">케이스 지적</span></div><ul>
@@ -1578,7 +1579,7 @@
           <li><b>기업 안 비개발자 · SaaS 대체</b><em>+ 포춘 500의 2/3에서 사용</em></li></ul></div>
         <div class="sq t risk" data-step="2"><div class="sl">T</div><div class="sn2">Threats · 위협 <span class="ck">케이스 지적</span></div><ul>
           <li><b>모델 회사의 번들링 = "실존적 위협"</b><em>+ Claude Code → Cowork · AI Studio · Codex 앱</em></li>
-          <li><b>Graduation problem · AI tourism</b><em>+ 트래픽 정점 대비 -40% · 월 증가 +$67M → +$29M</em></li></ul></div>
+          <li><b>Graduation problem · AI tourism</b><em>+ 트래픽 정점 대비 -40% · 월 증가 +6,700만 → +2,900만 달러</em></li></ul></div>
       </div>
       <div class="fn">굵은 글씨 = 케이스 지적 · <b style="color:#e64980">+</b> = 케이스 이후 데이터</div>
       <footer><span>Lovable: Vibe Coding for the Other 99%</span><span class="pg"></span></footer>
@@ -2699,7 +2700,7 @@
       let s = svgOpen;
       [0, 200, 400, 600].forEach(v => {
         s += `<line x1="80" x2="1320" y1="${Y(v)}" y2="${Y(v)}" stroke="#e7e1ea" stroke-width="1.5"/>`;
-        s += `<text x="66" y="${Y(v) + 6}" text-anchor="end" class="svgm" font-size="15" fill="#9a96a3">$${v}M</text>`;
+        s += `<text x="66" y="${Y(v) + 6}" text-anchor="end" class="svgm" font-size="15" fill="#9a96a3">${v ? v / 100 + '억 달러' : '0'}</text>`;
       });
       [[0, '2024.11'], [2, '2025'], [14, '2026'], [24, '2026.11']].forEach(([m, l]) =>
         s += `<text x="${X(m)}" y="${H - 34}" text-anchor="middle" class="svgm" font-size="15" fill="#9a96a3">${l}</text>`);
@@ -2733,10 +2734,10 @@
         s += `<g class="cum ev" data-step="1"><g class="evcard"><rect x="110" y="300" width="300" height="72" rx="14" fill="#fff" stroke="#ff6a3d" stroke-width="2"/><text x="128" y="331" font-size="21" font-weight="800" fill="#111">Lovable 출시</text><text x="128" y="356" font-size="15" fill="#55535c">2024.11 · 비개발자용으로 재설계</text></g></g>`;
         // ② three funding rounds at once
         [[8, 100], [13, 266.7], [21, 566.7]].forEach(([m, v]) => s += mark(m, v, 'dot', 2));
-        s += panel(2, '투자 3건 · 누적 $930M', '#e64980', [
-          ['2025.07', 'Series A  $200M', '기업가치 $1.8B · Accel'],
-          ['2025.12', 'Series B  $330M', '$6.6B · CapitalG · Menlo'],
-          ['2026.08', 'Series C  $400M', '$13.3B · Menlo · EQT'],
+        s += panel(2, '투자 3건 · 누적 9억 3,000만 달러', '#e64980', [
+          ['2025.07', 'Series A  2억 달러', '기업가치 18억 달러 · Accel'],
+          ['2025.12', 'Series B  3억 3,000만 달러', '66억 달러 · CapitalG · Menlo'],
+          ['2026.08', 'Series C  4억 달러', '133억 달러 · Menlo · EQT'],
         ]);
         // ③ four acquisitions
         [[12, 200], [20, 533.3], [22, 600]].forEach(([m, v]) => s += mark(m, v, 'dia', 3));
@@ -2756,7 +2757,7 @@
             return `<circle cx="${cx}" cy="110" r="${r}" fill="${i === 3 ? 'none' : '#ff6a3d'}" fill-opacity="${.35 + i * .2}" stroke="#ff6a3d" stroke-width="${i === 3 ? 3 : 0}" stroke-dasharray="${i === 3 ? '6 5' : ''}"/>` +
               `<text x="${cx}" y="172" text-anchor="middle" font-size="19" font-weight="800" fill="#111">${n}</text><text x="${cx}" y="192" text-anchor="middle" class="svgm" font-size="13" fill="#8a8693">${t}</text>`;
           }).join('') + `</g>`;
-        s += `<text x="${X(22) + 10}" y="${Y(600) - 18}" font-size="20" font-weight="800" fill="#ff6a3d">$600M</text>`;
+        s += `<text x="${X(22) + 10}" y="${Y(600) - 18}" font-size="20" font-weight="800" fill="#ff6a3d">6억 달러</text>`;
       } else {
         s += `<polyline points="${line}" fill="none" stroke="#d6cfdb" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`;
         // previous pace, extended
@@ -2764,8 +2765,8 @@
         s += `<text x="${X(19.5) + 14}" y="${Y(700) + 20}" font-size="17" fill="#4c6ef5" class="rise" style="--d:1s">이 속도였다면</text>`;
         s += `<polyline class="draw" pathLength="1" points="${pt(12, 200)} ${pt(15, 400)}" fill="none" stroke="#4c6ef5" stroke-width="10" stroke-linecap="round"/>`;
         s += `<polyline class="draw" pathLength="1" points="${pt(15, 400)} ${pt(19, 500)} ${pt(22, 600)}" fill="none" stroke="#ff6a3d" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" style="transition-delay:.9s"/>`;
-        s += `<g class="rise" style="--d:.5s"><rect x="470" y="120" width="250" height="92" rx="16" fill="#fff" stroke="#4c6ef5" stroke-width="2"/><text x="494" y="164" font-size="34" font-weight="800" fill="#3b5bdb">월 +$67M</text><text x="494" y="194" font-size="15" fill="#55535c">2025.11 → 2026.02</text></g>`;
-        s += `<g class="rise" style="--d:1.3s"><rect x="1000" y="250" width="250" height="92" rx="16" fill="#fff" stroke="#ff6a3d" stroke-width="2"/><text x="1024" y="294" font-size="34" font-weight="800" fill="#ff6a3d">월 +$29M</text><text x="1024" y="324" font-size="15" fill="#55535c">2026.02 → 2026.09</text></g>`;
+        s += `<g class="rise" style="--d:.5s"><rect x="470" y="120" width="250" height="92" rx="16" fill="#fff" stroke="#4c6ef5" stroke-width="2"/><text x="494" y="164" font-size="34" font-weight="800" fill="#3b5bdb">월 +6,700만</text><text x="494" y="194" font-size="15" fill="#55535c">2025.11 → 2026.02</text></g>`;
+        s += `<g class="rise" style="--d:1.3s"><rect x="1000" y="250" width="250" height="92" rx="16" fill="#fff" stroke="#ff6a3d" stroke-width="2"/><text x="1024" y="294" font-size="34" font-weight="800" fill="#ff6a3d">월 +2,900만</text><text x="1024" y="324" font-size="15" fill="#55535c">2026.02 → 2026.09</text></g>`;
       }
       return s + '</svg>';
     }
@@ -2820,10 +2821,10 @@
           `<path d="M418 70 H930" fill="none" stroke="#2b2838" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrD)"/>` +
           `<path d="M552 120 H930" fill="none" stroke="#2b2838" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrD)"/>` +
           `<text x="955" y="102" font-size="19" font-weight="800" fill="#2b2838">비개발자 쪽으로</text>` +
-          chip(880, 240, 'Google AI Studio', 'chip-model', 0, 'google') +
-          `<rect x="958" y="198" width="62" height="26" rx="13" fill="#e64980"/><text x="989" y="216" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" letter-spacing=".06em">NEW</text>` +
-          `<path d="M1040 270 C1080 310 1090 340 1090 376" fill="none" stroke="#e64980" stroke-width="3" marker-end="url(#arrP)"/>` +
-          `<text x="1180" y="300" text-anchor="end" font-size="17" font-weight="800" fill="#e64980">같은 고객을 향해</text></g>`;
+          chip(1010, 180, 'Google AI Studio', 'chip-model', 0, 'google') +
+          `<rect x="1088" y="138" width="62" height="26" rx="13" fill="#e64980"/><text x="1119" y="156" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" letter-spacing=".06em">NEW</text>` +
+          `<path d="M1060 210 C1100 270 1100 330 1092 376" fill="none" stroke="#e64980" stroke-width="3" marker-end="url(#arrP)"/>` +
+          `<text x="1080" y="300" text-anchor="end" font-size="17" font-weight="800" fill="#e64980">같은 고객을 향해</text></g>`;
       }
       return s + '</svg>';
     }
